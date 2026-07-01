@@ -1,41 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://cdn.tailwindcss.com"></script>
+<title>iPhone Frame</title>
+</head>
+
 <body class="bg-zinc-900 flex justify-center items-center min-h-screen">
 
-    <div
-        class="
-        relative
-        w-[393px]
-        h-[852px]
-        rounded-[42px]
-        border-[8px]
-        border-black
-        overflow-hidden
-        shadow-2xl
-        "
-    >
-        <div
-        class="absolute
-               top-3
-               left-1/2
-               -translate-x-1/2
-               w-[126px]
-               h-[37px]
-               bg-black
-               rounded-full
-               z-50">
-        </div>
-    <body className="bg-zinc-900 flex justify-center py-6">
-        <main
-            className="
-                w-[393px]
-                h-[852px]
-                overflow-y-auto
-                bg-white
-                rounded-[38px]
-                shadow-2xl
-                pt-[54px]
-                pb-[34px]
-            "
-        >
+  <!-- iPhone Frame -->
+  <div class="relative w-[393px] h-[852px] rounded-[42px] border-[8px] border-black overflow-hidden shadow-2xl bg-white">
+
+    <!-- Dynamic Island -->
+    <div class="absolute top-3 left-1/2 -translate-x-1/2 w-[126px] h-[37px] bg-black rounded-full z-50"></div>
+
+    <!-- App Content -->
+    <main class="w-full h-full overflow-y-auto pt-[54px] pb-[34px]">
+        
+      <!-- 你的頁面內容放這裡 -->
             <html class=""><head><script data-bard-injected="true">(function(firebaseConfig, initialAuthToken, appId) {
                     window.__firebase_config = firebaseConfig;
                     window.__initial_auth_token = initialAuthToken;
@@ -3482,20 +3465,10 @@
             </body></html>
         </main>
         
-                <div
-                class="absolute
-                bottom-2
-                left-1/2
-                -translate-x-1/2
-                w-[135px]
-                h-[5px]
-                rounded-full
-                bg-black/70
-                z-50">
-                </div>
         
         </div>
     </body>
     </div>
 
 </body>
+</html>
