@@ -482,12 +482,12 @@
             useEffect(() => {
                 localStorage.setItem("packingChecklist", JSON.stringify(checklist));
             }, [checklist]);
-            / 每次渲染後初始化圖標
+            // 每次渲染後初始化圖標
             useEffect(() => {
                 if (window.lucide) {
                     lucide.createIcons();
                 }
-            }, []);
+            },
 
             // 自動語音朗讀義大利語
             const speakItalian = (text) => {
