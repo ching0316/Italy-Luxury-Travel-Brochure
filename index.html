@@ -562,12 +562,42 @@
                 }
             };
 
-            // 產生 Google Maps 搜尋連結
+            // Italian Cities Translation Map for superior map queries
+            const translateCity = (cityStr) => {
+              if (!cityStr) return '';
+              if (cityStr.includes('米蘭')) return 'Milan';
+              if (cityStr.includes('威尼斯')) return 'Venice';
+              if (cityStr.includes('佛羅倫斯') || cityStr.includes('翡冷翠')) return 'Florence';
+              if (cityStr.includes('比薩')) return 'Pisa';
+              if (cityStr.includes('羅馬')) return 'Rome';
+              if (cityStr.includes('梵蒂岡')) return 'Vatican City';
+              if (cityStr.includes('桃園') || cityStr.includes('台北')) return 'Taiwan';
+              return cityStr.split(' ➔ ')[0].split(' ')[0];
+            };
+
+            // 100% Precise Google Maps URL Builder
             const getGoogleMapsLink = (item, city) => {
-                const searchPlace = item.place || item.title;
-                const cleanCity = city.split(" ➔ ")[0].split(" ")[0];
-                const queryParts = [searchPlace, item.address, cleanCity, "Italy"].filter(Boolean);
-                return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(queryParts.join(", "))}`;
+              // 1. Detect coordinates in descriptions/tips (e.g., Trevi, Spanish Steps, Accademia)
+              const coordsRegex = /(-?\d+\.\d+)\s*,\s*(-?\d+\.\d+)/;
+              const combinedText = (item.desc || '') + ' ' + (item.tips || '');
+              const match = combinedText.match(coordsRegex);
+              if (match) {
+                return `https://www.google.com/maps/search/?api=1&query=${match[1]},${match[2]}`;
+              }
+        
+              // 2. Build precision search query (separated search terms + address + translated city + country)
+              const searchPlace = item.place || item.title;
+              const translatedCity = translateCity(city);
+              const isTaiwan = translatedCity === 'Taiwan' || (item.place && (item.place.includes('Taoyuan') || item.place.includes('桃園')));
+        
+              const queryParts = [
+                searchPlace,
+                item.address,
+                isTaiwan ? '' : translatedCity,
+                isTaiwan ? 'Taiwan' : 'Italy'
+              ].filter(Boolean);
+        
+              return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(queryParts.join(', '))}`;
             };
 
             const handleAddChecklistItem = (e) => {
