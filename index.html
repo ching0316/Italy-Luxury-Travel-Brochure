@@ -11,8 +11,7 @@
     
     <!-- 引入 Tailwind CSS 進行響應式排版 -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入 Lucide 圖標庫 -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -482,7 +481,12 @@
             useEffect(() => {
                 localStorage.setItem("packingChecklist", JSON.stringify(checklist));
             }, [checklist]);
-            
+           
+            useEffect(() => {
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
+            },
 
             // 自動語音朗讀義大利語
             const speakItalian = (text) => {
