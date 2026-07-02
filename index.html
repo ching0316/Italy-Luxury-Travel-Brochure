@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    <!-- 加入 viewport-fit=cover 確保網頁填滿 iPhone 14 Pro 動態島與底部安全區域 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>義大利 15 日尊榮旅遊手冊</title>
+    
+    <!-- 載入 Google Fonts 更換為整齊、現代、清晰的無襯線英中文雙字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- 引入 Tailwind CSS 進行響應式排版 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 載入 React & ReactDOM 18 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+    <!-- 載入 Babel 讓瀏覽器可以直接解析高可讀性的 JSX 語法 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- 載入 穩定 UMD 版本的 Lucide 圖標庫 -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.400.0/dist/umd/lucide.min.js"></script>
+
+    <style>
+        /* 更換為清晰整齊的現代無襯線英中文 */
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            overflow: hidden; /* 防止 iOS 橡皮筋回彈效果干擾體驗 */
+            touch-action: pan-y;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* 支援 iPhone 14 Pro 的頂部動態島 padding 避讓 */
+        .safe-top {
+            padding-top: max(1rem, env(safe-area-inset-top, 44px));
+        }
+        /* 支援 iPhone 14 Pro 的底部 Home Indicator padding 避讓 */
+        .safe-bottom {
+            padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 34px));
+        }
+    </style>
+</head>
+<body class="bg-zinc-100 dark:bg-slate-950 transition-colors duration-300">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // 義大利 15 天詳細行程數據
+        const DAYS_DATA = [
+          {
+            day: 1,
+            date: '10月1日 星期四',
+            city: '桃園 ➔ 飛機上',
+            title: '啟航！搭乘班機飛往時尚之都米蘭',
+            summary: '搭乘長榮航空班機，飛越半個地球前往北義大城米蘭。',
+            items: [
+            { id: 'd1-1', time: '23:15', title: '飛機起飛：臺灣桃園機場 2航廈', desc: '搭乘長榮航空班機飛往米蘭。請提前 3 小時至二航廈辦理登機。', type: 'flight', note: '確認護照效期6個月以上', place: 'Taiwan Taoyuan International Airport Terminal 2', address: 'No. 9, Hangzhan S. Rd., Dayuan Dist., Taoyuan City, 33758, Taiwan' }
+            ]
+          },
+          {
+            day: 2,
+            date: '10月2日 星期五',
+            city: '米蘭',
+            title: '米蘭抵達 ➔ 斯福爾扎城堡 ➔ 艾曼紐二世拱廊購物',
+            summary: '降落米蘭，體驗經典 1 號路面電車、公牛轉圈儀式與傳統米蘭番紅花燴飯。',
+            items: [
+              { id: 'd2-1', time: '07:35', title: '飛機抵達：米蘭-馬爾彭薩機場 1航廈 (MXP)', desc: '出關與領取行李。', type: 'flight', note: '出關後機場洗手間必上！', place: 'Milano Malpensa Airport Terminal 1', address: '21010 Ferno, Province of Varese, 義大利' },
+              { id: 'd2-2', time: '08:30-09:35', title: '出關 + 領行李', desc: '行李盤前核對行李，準備前往搭車。', type: 'transport' },
+              { id: 'd2-3', time: '09:35-10:50', title: '搭 Malpensa Express 機場特快 ➔ 米蘭中央車站', desc: '乘車地點：第1航廈(T1)地下1樓(Level-1)，跟隨「Train/Malpensa Express」指標前進。尋找目的地為 Milano Centrale 的班次，建議使用 Trenord App 購票。', type: 'transport', place: 'Milano Centrale Railway Station', address: 'Piazza Duca d\'Aosta, 1, 20124 Milano MI, Italy' },
+              { id: 'd2-4', time: '10:50-11:20', title: 'NYX Hotel Milan 飯店寄放行李', desc: '前往 NYX 飯店前台寄放隨身大件行李，短暫整裝。', type: 'hotel', note: '大廳可使用洗手間', place: 'NYX Hotel Milan by Leonardo Hotels', address: 'Piazza Quattro Novembre, 3, 20124 Milano MI, Italy' },
+              { id: 'd2-5', time: '11:20-11:45', title: '搭地鐵 M2 (綠線)：Centrale Fs ➔ Lanza', desc: '往 Abbiategrasso 或 Assago Forum 方向搭乘 4 站。使用 ATM Milano App 購買 24 小時票。', type: 'transport', note: 'Lanza 站出站即是斯福爾扎城堡後方', place: 'Lanza Metro Station Milan', address: 'Piazza Lanza, 20121 Milano MI, Italy' },
+              { id: 'd2-6', time: '11:45-12:45', title: '斯福爾扎城堡 & 和平門散步', desc: 'Lanza 站出站後沿護城河外前往正門，可拍到城堡側面全景。11:55 到達正門 Piazza Castello 噴泉廣場，拍攝噴泉與高塔，尋找蛇吞人紋章。走進第一層中庭，利用古典拱廊與後防禦塔進行「自然畫框」構圖。由城堡後門步出森皮奧內公園中央步道，走向和平門拍攝。', type: 'sight', tips: '對稱極簡構圖：站在公園中軸線盡頭拍攝。都會街景感：在 Arco della Pace 站，拍攝電車軌道與老街道的現代歷史交融感。', place: 'Castello Sforzesco', address: 'Piazza Castello, 20121 Milano MI, Italy' },
+              { id: 'd2-7', time: '12:45-13:00', title: '搭 1 號路面電車：Arco della Pace ➔ P.za Virgilio', desc: '往 Greco Rovereto 方向搭乘 4 站。下車過馬路即達餐廳，車程僅 10 分鐘，能體驗懷舊電車。', type: 'transport', place: 'Arco della Pace', address: 'Piazza Sempione, 20154 Milano MI, Italy' },
+              { id: 'd2-8', time: '13:10-14:00', title: '午餐：miscusi | pasta fresca Milano Cadorna', desc: '享用米蘭當地高人氣的手工新鮮義大利麵。', type: 'food', note: '有洗手間', place: 'miscusi | pasta fresca Milano Cadorna', address: 'Via G. Leopardi, 13, 20123 Milano MI, 義大利' },
+              { id: 'd2-9', time: '14:15-14:35', title: '義大利證券交易所 (Palazzo Mezzanotte)', desc: '觀賞並拍攝 Maurizio Cattelan 的著名爭議性雕塑「中指 (L.O.V.E. 雕塑)」。', type: 'sight', place: 'Palazzo Mezzanotte', address: 'Piazza degli Affari, 6, 20123 Milano MI, Italy' },
+              { id: 'd2-10', time: '14:45-15:10', title: '斯卡拉大劇院 (Teatro alla Scala)', desc: '抵達劇院外廣場，拍攝其經典古典主義風格外觀。', type: 'sight', place: 'Teatro alla Scala', address: 'Via Filodrammatici, 2, 20121 Milano MI, Italy' },
+              { id: 'd2-11', time: '15:10-18:30', title: '艾曼紐二世拱廊逛街', desc: '逛街路線：Marchesi 1824 → Ferrari Flagship Store Milano → Apple Store Piazza Liberty → La Rinascente Milano。好運儀式：找到八角中心地板上的「公牛馬賽克」，用右腳跟踩在公牛生殖器部位轉三圈！', type: 'shopping', note: 'La Rinascente 百貨或 Marchesi 1824 有洗手間可用。非歐盟旅客滿額（目前70歐元以上）記得索取退稅單。', place: 'Galleria Vittorio Emanuele II', address: '20123 Milan, Metropolitan City of Milan, Italy' },
+              { id: 'd2-12', time: '18:30-19:00', title: '地鐵換乘：M3 (黃線) Duomo ➔ Zara ➔ 轉M5 (紫線) ➔ Garibaldi FS', desc: '搭 M3 黃線往 Comasina 方向 6 站。至 Zara 站順 M5 指標下樓轉紫線，往 San Siro Stadio 方向坐 2 站。於 Garibaldi FS 站下車，朝 Piazza XXV Aprile 指標出站。', type: 'transport', place: 'Garibaldi FS', address: 'Viale Luigi Sturzo, 20154 Milano MI, Italy'  },
+              { id: 'd2-13', time: '19:00-19:50', title: 'Eataly Milano Smeraldo', desc: '逛米蘭頂級食材超市超市，挑選義大利起司、橄欖油、乾酪與紀念品。', type: 'shopping', note: '有洗手間', place: 'Eataly Milano Smeraldo', address: 'Piazza Venticinque Aprile, 10, 20121 Milano MI, Italy' },
+              { id: 'd2-14', time: '20:00-20:15', title: '搭 10 號路面電車：Via Rosales ➔ Via Filzi Via Pirelli', desc: '往 Viale Lunigiana 方向搭乘 5 站。10 號電車常出現米蘭經典 “Ventotto” (1928型) 老電車，木造內裝與溫光極富情懷。', type: 'transport' , place: 'Via Filzi Via Pirelli' },
+              { id: 'd2-15', time: '20:15-21:30', title: '晚餐：Osteria italiana', desc: '享用經典地道的米蘭番紅花燴飯 (Saffron Risotto)。', type: 'food', place: 'Osteria Italiana Milano', address: 'Via Napo Torriani, 22, 20124 Milano MI, Italy' },
+              { id: 'd2-16', time: '21:35-21:40', title: '抵達：NYX Hotel Milan', desc: '回房洗漱，調整時差，結束精彩第一天。', type: 'hotel', place: 'NYX Hotel Milan by Leonardo Hotels', address: 'Piazza Quattro Novembre, 3, 20124 Milano MI, Italy' },
+            ]
+          },
+          {
+            day: 3,
+            date: '10月3日 星期六',
+            city: '米蘭',
+            title: '最後的晚餐朝聖 ➔ 米蘭大教堂 ➔ 登頂金色高光',
+            summary: '目睹達文西《最後的晚餐》，大教堂洗禮堂與 Fast Track 電梯黃金夕落登頂。',
+            items: [
+              { id: 'd3-1', time: '07:00-07:50', title: '早餐：NYX Hotel Milan', desc: '享用飯店精緻餐飲，建議 07:50 準時離開飯店前往地鐵。', type: 'food', note: '出門前洗手間必上' , place: 'NYX Hotel Milan by Leonardo Hotels', address: 'Piazza Quattro Novembre, 3, 20124 Milano MI, Italy'},
+              { id: 'd3-2', time: '08:00-08:25', title: '搭地鐵 M2 (綠線)：Centrale Fs ➔ Cadorna FN', desc: '往 Abbiategrasso或Assago Forum 方向搭乘 5 站，使用 24 小時票。Cadorna 出口跟隨「Santa Maria delle Grazie」指標，沿 Via Giosuè Carducci 步行約 8-10 分鐘抵達恩寵聖母院。', type: 'transport' , place: 'Cadorna FN' , address: '20123 Milan, Metropolitan City of Milan, Italy'},
+              { id: 'd3-3', time: '08:35-08:50', title: '取票：恩寵聖母《最後的晚餐》', desc: '必須提前至少 30 分鐘領票！領票櫃檯就在入口 left side 的小建築內，記得帶上護照與預約確認信。等待時拍恩寵聖母院外觀。', type: 'sight', note: '最後的晚餐前遊客中心洗手間必上！', place: 'The Last Supper Museum Ticket Office', address: 'Via Fratelli Ruffini, 1, 20123 Milano MI, Italy' },
+              { id: 'd3-4', time: '09:30-09:45', title: '參觀達文西壁畫《最後的晚餐》', desc: '進場流程為氣密式分批進入，保護壁畫。館內參觀時間限制 15 分鐘。', type: 'sight', place: 'Cenacolo Vinciano', address: 'Piazza di Santa Maria delle Grazie, 2, 20123 Milano MI, Italy' },
+              { id: 'd3-5', time: '09:50-10:15', title: '參觀恩寵聖母', desc: '彈性參觀本殿內部，欣賞古典穹頂與磚造裝飾。', type: 'sight', place: 'Basilica di Santa Maria delle Grazie', address: 'Via Giuseppe Antonio Sassi, 3, 20123 Milano MI, Italy' },
+              { id: 'd3-6', time: '10:15-10:30', title: '搭地鐵 M1 (紅線)：Conciliazione ➔ Duomo', desc: '往 Sesto 1 Maggio Fs 方向 4 站，步行至 Conciliazione 站搭紅線直達大教堂廣場。', type: 'transport' , place: 'Duomo', address: 'P.za del Duomo, 20123 Milano MI, Italy'},
+              { id: 'd3-7', time: '10:30-11:10', title: '午餐：Panzerotti Luini 或 Spontini', desc: '排隊享用經典油炸三明治（起司番茄）或厚切披薩。', type: 'food', note: 'La Rinascente 百貨或 Marchesi 1824 有洗手間', place: 'Luini', address: 'Via Santa Radegonda, 16, 20121 Milano MI, Italy' },
+              { id: 'd3-8', time: '11:15-11:40', title: '米蘭大教堂安檢排隊', desc: '前往大教堂正前方排隊進行人身安檢。準備預約的 FAST TRACK PASS with terraces by lift 門票。', type: 'sight', place: 'Duomo di Milano', address: 'Piazza del Duomo, 20122 Milano MI, Italy' },
+              { id: 'd3-9', time: '11:40-13:40', title: '米蘭大教堂內部 + 地下考古區', desc: '欣賞中殿彩繪玻璃與地下考古遺址。13:45-14:30 的彩繪玻璃光影投射在地上最美（適合拍人物+彩色剪影光效）。地下考古遺址看四世紀洗禮堂地基。', type: 'sight', note: '離開教堂內部前，考古區內洗手間必上！', place: 'Duomo di Milano', address: 'Piazza del Duomo, 20122 Milano MI, Italy' },
+              { id: 'd3-10', time: '13:50-15:40', title: '米蘭大教堂博物館', desc: '位於大教堂旁。看3大重點：屋頂雕像原件、彩色玻璃窗設計底稿、宏偉的教堂精密木製大建築模型。', type: 'sight', note: '洗手間必上', place: 'Museo del Duomo di Milano', address: 'Piazza del Duomo, 12, 20122 Milano MI, Italy' },
+              { id: 'd3-11', time: '15:45-16:00', title: '前往 Fast Track 電梯入口安檢', desc: '電梯入口位於面向大教堂的右側。在入口處排隊過安檢等候電梯上樓。', type: 'transport' },
+              { id: 'd3-12', time: '16:00-18:00', title: '米蘭大教堂露台登頂 ( terraces by lift )', desc: '16:00 拍攝清晰全景，16:30 側斜陽光打在哥德尖塔，17:10-17:40 為最美金色高光晚霞！整座飛扶壁染上金橘色。', type: 'sight', tips: '沿梯而上，利用尖塔石雕間隙做前景。', place: 'Terrazza del Duomo', address: 'Piazza del Duomo, 20122 Milano MI, Italy' },
+              { id: 'd3-13', time: '18:10-18:30', title: '米蘭王宮', desc: '拍建築外觀，18:20 藍調效果最佳。王宮宏大的柱列與溫暖的燈光形成對比。', type: 'sight', place: 'Palazzo Reale Milano', address: 'Piazza del Duomo, 12, 20122 Milano MI, Italy' },
+              { id: 'd3-14', time: '18:30-19:20', title: '星巴克臻選® 米蘭烘焙工坊', desc: '前郵政大樓建，欣賞現場巨型烘豆機運作、品嚐手沖或氮氣咖啡，拍攝工業風裝潢。', type: 'sight', note: '有洗手間', place: 'Starbucks Reserve Roastery Milano', address: 'Piazza Cordusio, 3, 20123 Milano MI, Italy' },
+              { id: 'd3-15', time: '19:30-21:00', title: '晚餐：Slow Sud', desc: '享用南義道地風味海鮮與餐點。', type: 'food', note: '有洗手間', place: 'SlowSud Duomo', address: 'Via delle Asole, 4, 20123 Milano MI, Italy' },
+              { id: 'd3-16', time: '21:00-21:20', title: '冰淇淋：Ciacco', desc: '米蘭冰淇淋名店，以極具實驗室精神、無添加的濃意 Gelato 著稱。', type: 'food', place: 'Ciacco gelato senz\'altro', address: 'Via Spadari, 13, 20123 Milano MI, Italy' },
+              { id: 'd3-17', time: '21:30-21:55', title: '搭地鐵 M3 (黃線)：Duomo → Centrale Fs', desc: '往 Comasina 方向搭乘 4 站。', type: 'transport' , place: 'Centrale Fs', address: 'Piazza Duca d\'Aosta, 20124 Milano MI, Italy'},
+              { id: 'd3-18', time: '22:00-22:10', title: '抵達：NYX Hotel Milan', desc: '回飯店休息，收拾行李準備明天一早前往威尼斯。', type: 'hotel', place: 'NYX Hotel Milan by Leonardo Hotels', address: 'Piazza Quattro Novembre, 3, 20124 Milano MI, Italy' }
+            ]
+          },
+          {
+            day: 4,
+            date: '10月4日 星期日',
+            city: '米蘭/威尼斯',
+            title: '紅箭高鐵跨海長堤 ➔ 總督宮 ➔ 聖馬可鐘樓登頂安康逆光',
+            summary: '搭乘紅箭高鐵前往潟湖水都威尼斯，參觀總督宮與鐘樓登頂黃金逆光。',
+            items: [
+              { id: 'd4-1', time: '06:30-07:00', title: 'NYX Hotel Milan 退房與寄行李', desc: '早起整理行李，辦妥退房手續，並將大行李寄放在櫃檯。', type: 'hotel', place: 'NYX Hotel Milan by Leonardo Hotels', address: 'Piazza Quattro Novembre, 3, 20124 Milano MI, Italy' },
+              { id: 'd4-2', time: '07:00-07:50', title: '早餐：NYX Hotel Milan', desc: '飯店享用完早餐後出發。', type: 'food', note: '出發前大廳洗手間必上！', place: 'NYX Hotel Milan by Leonardo Hotels', address: 'Piazza Quattro Novembre, 3, 20124 Milano MI, Italy' },
+              { id: 'd4-3', time: '08:00-08:10', title: '前往米蘭 Milano Centrale 車站', desc: '沿站前道路直接步入車站一樓挑高中央大廳。先在巨大電子看板 Departures (Partenze) 尋找 Frecciarossa 車次號、月台 (Binario)。', type: 'transport', note: '月台通常在出發前 10-15 分鐘公布。月台皆在同一平面，不用上下樓，切勿走地下通道。', place: 'Milano Centrale Railway Station', address: 'Piazza Duca d\'Aosta, 1, 20124 Milano MI, Italy'  },
+              { id: 'd4-4', time: '08:15-11:12', title: '搭 Frecciarossa：08:45 米蘭Milano Centrale ➔ 11:12 威尼斯Venezia Santa Lucia', desc: '列車經過 Desenzano 站時可遠眺加爾達湖湖景。當列車在 11:05 駛進跨海長堤時，坐在左側視野開闊，可以拍到「火車行駛在海中央」的奇景。上車後將大行李放在車廂中央或入口行李架。', type: 'transport' , place: 'Venezia Santa Lucia', address: '30100義大利 Metropolitan City of Venice, Venice' },
+              { id: 'd4-5', time: '11:25-12:00', title: 'Hotel Principe 寄放行李', desc: '從車站步行 3 分鐘抵達運河旁的飯店，寄放行李。', type: 'hotel', note: '大廳洗手間必上！', place: 'Hotel Principe Venice', address: 'Lista di Spagna, 146, 30121 Venezia VE, Italy' },
+              { id: 'd4-6', time: '12:10-12:45', title: '午餐：Pasticceria Dal Mas', desc: '威尼斯百年老字號糕餅店，站著享用現烤牛角可頌與濃郁 Espresso。', type: 'food', note: '有洗手間' , place: 'Pasticceria Dal Mas', address: 'Rio Terà Lista di Spagna, 149, 30121 Venezia VE, Italy' },
+              { id: 'd4-7', time: '12:50-13:20', title: '搭乘 Vaporetto Line 2 (Ferrovia ➔ San Marco)', desc: '在碼頭現場購買紙本 ACTV 48小時交通券並刷碼進站。登上 2 號快速水上巴士往 S. Marco / Giardinetti 方向。坐戶外船尾欣賞大運河拜占庭與巴洛克宮殿。', type: 'transport' , place: 'S. Marco Giardinetti', address: 'Lagune von, 30100 Venezia VE, Italy'},
+              { id: 'd4-8', time: '13:40-16:15', title: '總督宮', desc: '預約 14:00 門票，從靠潟湖面海側入口進入。參觀黃金階梯。15:30 左右太陽西斜，光線打進大議會廳拍金色光影效果絕倫。走過嘆息橋拍防禦監獄。', type: 'sight', note: '離開總督宮前內部洗手間必上！', place: 'Doge\'s Palace', address: 'Piazza San Marco, 1, 30124 Venezia VE, Italy' },
+              { id: 'd4-9', time: '16:15-16:50', title: '聖馬可鐘樓登頂', desc: '預約 16:30-17:00 門票。搭電梯登頂。16:35 順光下對面聖馬可大教堂金箔穹頂閃閃發亮。16:40 對面安康聖母聖殿大運河入口處逆光，拍攝波光粼粼的黃金水面；16:45 拍聖馬可廣場全景人群幾何感；16:50 拍聖喬治馬焦雷教堂海天漸層色。', type: 'sight', place: 'Campanile di San Marco', address: 'Piazza San Marco, 30124 Venezia VE, Italy' },
+              { id: 'd4-10', time: '16:50-17:00', title: '下鐘樓', desc: '', type: 'sight' , place: 'Campanile di San Marco', address: 'Piazza San Marco, 30124 Venezia VE, Italy' },
+              { id: 'd4-11', time: '17:00-17:10', title: '前往碼頭 San Marco', desc: '步行至 San Marco Giardinetti 碼頭準備登船。', type: 'transport' },
+              { id: 'd4-12', time: '17:20-17:55', title: '搭乘 Vaporetto Line 2 (San Marco ➔ Ferrovia)', desc: '建議優先從 San Marco Giardinetti 上船（通常比 Vallaresso 更空）。認準 “Direzione Ple Roma/Ferrovia” 看板。坐左側靠窗或露天甲板，落日餘暉打在運河兩側老建築上呈現玫瑰金色。', type: 'transport' , place: 'Ferrovia', address: 'Fondamenta Scalzi, 30121 Venezia VE, Italy'},
+              { id: 'd4-13', time: '18:05-19:20', title: 'Hotel Principe 大運河夕陽', desc: '此時運河兩側進入金色高光（18:00左右），隨後在 18:30 大運河進入高飽和藍調，河水波光粼粼。', type: 'hotel' , place: 'Hotel Principe Venice', address: 'Lista di Spagna, 146, 30121 Venezia VE, Italy' },
+              { id: 'd4-14', time: '19:30-21:00', title: '晚餐：Trattoria Bar Pontini', desc: '在運河旁小店享用威尼斯當地最負盛名的海鮮麵、墨魚麵、與黃金小魚拼盤，推薦搭配一杯 Aperol Spritz。', type: 'food', place: 'Trattoria Bar Pontini', address: 'Cannaregio, 1268, 30121 Venezia VE, Italy' },
+              { id: 'd4-15', time: '21:05-21:10', title: 'Hotel Principe 大運河夜景', desc: '享受與白天喧囂截然不同的威尼斯靜謐夜景。', type: 'hotel' , place: 'Hotel Principe Venice', address: 'Lista di Spagna, 146, 30121 Venezia VE, Italy' }
+            ]
+          },
+          {
+            day: 5,
+            date: '10月5日 星期一',
+            city: '威尼斯',
+            title: '里奧多市場 ➔ 聖馬可點燈 ➔ 平民貢多拉 ➔ 學院橋暮色',
+            summary: '早上逛傳統市集與沈船書店，中午見證聖馬可點燈，黃昏由學院橋俯瞰安康聖母殿晚霞。',
+            items: [
+              { id: 'd5-1', time: '07:00-08:00', title: '早餐：Hotel Principe', desc: '在運河畔玻璃長廊享用飯店早餐。', type: 'food', note: '建議選擇靠窗座，風景優美。' , place: 'Hotel Principe Venice', address: 'Lista di Spagna, 146, 30121 Venezia VE, Italy' },
+              { id: 'd5-2', time: '08:00-08:15', title: '晨景與最後整理退房', desc: '回房做最後行李收納，辦妥退房手續。', type: 'hotel', note: '退房前大廳洗手間必上！' , place: 'Hotel Principe Venice', address: 'Lista di Spagna, 146, 30121 Venezia VE, Italy' },
+              { id: 'd5-3', time: '08:15-08:40', title: '前往 Hotel NH Venezia Santa Lucia', desc: '更換飯店。拖行李步行 3 分鐘至鄰近的 NH 飯店辦理行李寄放手續。', type: 'hotel', place: 'Hotel NH Venezia Santa Lucia - Formerly Hotel Bellini', address: 'Rio Terà Lista di Spagna, 116/A, 30121 Venezia VE, Italy' },
+              { id: 'd5-4', time: '08:40-09:00', title: '搭 Vaporetto Line 1：Ferrovia ➔ Rialto', desc: '前往里奧多市場 (Mercato di Rialto)。站在「戶外甲板」或靠右側坐，早晨陽光順光照亮大運河兩側宮殿。', type: 'transport' , place: 'Rialto Market', address: 'Calle Prima de la Donzella, 306, 30125 Venezia VE, Italy' },
+              { id: 'd5-5', time: '09:00-10:00', title: '里奧多魚市場與里阿爾托橋', desc: '清晨走訪傳統鮮魚市場與蔬果市集，感受在地人生活。隨後步行至里阿爾托橋俯拍運河全景。', type: 'sight', note: '市場旁的收費公廁早上尚可。', place: 'Ponte di Rialto', address: '30125義大利 Metropolitan City of Venice, Venice' },
+              { id: 'd5-6', time: '10:10-10:40', title: '尋找沈船書店', desc: '穿梭在威尼斯複雜的小巷中。在店內看浴缸和貢多拉停泊藏書，到後院爬舊書疊成的防火階梯。', type: 'sight', tips: '41.9226, 12.3323 附近，小巷無訊號，請先截圖地圖。', place: 'Libreria Acqua Alta', address: 'Calle Lunga Santa Maria Formosa, 5176b, 30122 Venezia VE, Italy' },
+              { id: 'd5-7', time: '10:40-11:00', title: '前往聖馬可大教堂', desc: '沿指標步行前往聖馬可廣場，準備預約的快速通關門票。', type: 'transport' , place: 'St. Mark\'s Basilica', address: 'Piazza San Marco, 328, 30124 Venezia VE, Italy'},
+              { id: 'd5-8', time: '11:00-12:45', title: '聖馬可大教堂', desc: '預約 11:00-11:30。11:00 由預約通道進正門，欣賞一樓地面中世紀大理石拼花。11:25 進入祭壇後方的黃金祭壇區。11:30 金箔點燈，抬頭看見萬千黃金馬賽克瞬間閃耀，震撼無比。11:40 拾級上二樓博物館近距離平視金箔穹頂，看青銅馬真跡，並至戶外大平台拍攝。', type: 'sight', tips: '12:00 正午，陽光射入聖馬可廣場，在露台可以以青銅馬複製品為前景拍攝與大廣場的景深照。', place: 'St. Mark\'s Basilica', address: 'Piazza San Marco, 328, 30124 Venezia VE, Italy' },
+              { id: 'd5-9', time: '13:00-14:40', title: '午餐：弗洛里安咖啡館', desc: '露天廣場座位伴隨音樂演奏，享用百年餐館的下午茶點心與輕食。', type: 'food', note: '離開咖啡館前必上內部洗手間。', place: 'Caffè Florian', address: 'Piazza San Marco, 57, 30124 Venezia VE, Italy' },
+              { id: 'd5-10', time: '14:50-15:00', title: '搭 Traghetto 平民版貢多拉', desc: '地點：在百合聖母 Santa Maria del Giglio 渡口。上岸買票僅需 2 歐元硬幣現金。體驗當地居民橫跨大運河，船夫在船頭站立划槳，航程 2-3 分鐘。', type: 'transport', note: '若因天候停運則改走學院橋。只收現金且不找零。', place: 'Gondola Traghetto Santa Maria del Giglio', address: 'Calle Lanza, 30124 Venezia VE, Italy' },
+              { id: 'd5-11', time: '15:00-17:15', title: '安康聖母聖殿階梯拍照', desc: '在宏大教堂前潔白階梯靜坐，午後側光正好照亮教堂曲線，拍起照來大運河與交會處層次分明。', type: 'sight', place: 'Santa Maria della Salute', address: 'Fondamenta Salute, 30123 Venezia VE, Italy' },
+              { id: 'd5-12', time: '17:25-18:15', title: '學院橋黃金落日', desc: '從安康聖母聖殿步行 10 分鐘到木製學院橋上。卡位中央面對安康聖母殿方向。夕陽會從身後投射，把遠方安康聖母圓頂染成通透的金橘色，為最經典的明信片視角。', type: 'sight', tips: '17:35-18:00 金色晚霞，人像側逆光邊緣極美。', place: 'Ponte dell\'Accademia', address: 'Venezia VE, Italy' },
+              { id: 'd5-13', time: '18:20-18:45', title: '搭 Vaporetto Line 1：Accademia ➔ S. Zaccaria', desc: '坐船回聖馬可區，此時天空入深藍色，兩岸古老府邸紛紛亮燈。', type: 'transport' },
+              { id: 'd5-14', time: '18:45-19:00', title: '麥桿橋拍嘆息橋夜景', desc: '站在麥桿橋上面向嘆息橋，藍調微弱燈光下，神祕而憂鬱。', type: 'sight', place: 'Ponte della Paglia', address: 'Piazza San Marco, 30124 Venezia VE, Italy' },
+              { id: 'd5-15', time: '19:30-21:00', title: '晚餐：La Piazza', desc: '品嚐當地招牌鮮蝦細麵、威尼斯墨魚麵與海鮮拼盤。', type: 'food', note: '洗手間必上！', place: 'Ristorante La Piazza Venice', address: 'San Marco, 1184, 30124 Venezia VE, Italy' },
+              { id: 'd5-16', time: '21:20-21:50', title: 'Gelateria Gallonetto', desc: '在威尼斯巷內，享用手工純鮮奶與開心果口味冰淇淋 Gelato。', type: 'food', place: 'Gondola - Traghetto Santa Maria del Giglio', address: 'Campiello Traghetto, 30124 Venezia VE, Italy' },
+              { id: 'd5-17', time: '22:00-22:20', title: '搭 Vaporetto Line 2：Rialto → Ferrovia', desc: '從 Rialto 搭 2 號快速水上巴士回到 Ferrovia 站，返回 NH 飯店休息。', type: 'transport' , place: 'Hotel NH Venezia Santa Lucia - Formerly Hotel Bellini', address: 'Rio Terà Lista di Spagna, 116/A, 30121 Venezia VE, Italy' }
+            ]
+          },
+          {
+            day: 6,
+            date: '10月6日 星期二',
+            city: '威尼斯/佛羅倫斯',
+            title: '高鐵跨越托斯卡尼 ➔ 烏菲茲波提切利 ➔ 聖三一橋老橋全景',
+            summary: '高鐵直飛翡冷翠，下午參觀文藝復興首府烏菲茲，傍晚在聖三一橋拍老橋河面倒影。',
+            items: [
+              { id: 'd6-1', time: '06:30-07:00', title: 'Hotel NH Venezia Santa Lucia退房並寄行李', desc: '整理完退房並辦理寄存行李。', type: 'hotel' , place: 'Hotel NH Venezia Santa Lucia - Formerly Hotel Bellini', address: 'Rio Terà Lista di Spagna, 116/A, 30121 Venezia VE, Italy' },
+              { id: 'd6-2', time: '07:00-07:30', title: '早餐：Hotel NH Venezia Santa Lucia', desc: '享用豐盛的精緻早餐。', type: 'food', note: '早餐後大廳洗手間必上！' , place: 'Hotel NH Venezia Santa Lucia - Formerly Hotel Bellini', address: 'Rio Terà Lista di Spagna, 116/A, 30121 Venezia VE, Italy' },
+              { id: 'd6-3', time: '07:35-07:45', title: '前往Venezia Santa Lucia 車站', desc: '拖隨身行李步行 3 分鐘進站。', type: 'transport' , place: 'Venezia Santa Lucia', address: '30100義大利 Metropolitan City of Venice, Venice' },
+              { id: 'd6-4', time: '08:00-10:20', title: '搭 Italo： 08:05 威尼斯Venezia Santa Lucia ➔ 10:20 佛羅倫斯 Firenze S.M.N', desc: '高鐵出波隆那站進入山區隧道時，坐在右側偶爾可瞥見托斯卡尼金黃色起伏的丘陵、古松林與紅磚農舍。', type: 'transport' , place: 'Firenze Santa Maria Novella', address: 'Piazza della Stazione, 50123 Firenze FI, Italy'},
+              { id: 'd6-5', time: '10:35-11:00', title: 'Strozzi Palace Hotel 飯店寄存物', desc: '高鐵出站後步行 10 分鐘，抵達這座極富梅迪奇宮殿感的飯店寄物。', type: 'hotel', note: '前台大廳洗手間必上！', place: 'Strozzi Palace Hotel', address: 'Via de\' Monalda, 12, 50123 Firenze FI, Italy' },
+              { id: 'd6-6', time: '11:30-12:30', title: '午餐：I\' Girone De\' Ghiotti', desc: '大啖鋪滿生火腿與松露醬的傳統托斯卡尼大乾酪熟肉帕尼尼拼盤。', type: 'food', place: 'I\' Girone De\' Ghiotti', address: 'Via dei Cimatori, 23, 50122 Firenze FI, Italy' },
+              { id: 'd6-7', time: '12:40-13:10', title: '聖十字聖殿外觀拍照', desc: '步行至聖十字廣場，仰望由白綠粉紅大理石拼花建成的宏偉哥德式立面外觀。', type: 'sight', place: 'Basilica di Santa Croce', address: 'Piazza di Santa Croce, 16, 50122 Firenze FI, Italy' },
+              { id: 'd6-8', time: '13:10-13:30', title: '前往烏菲茲美術館', desc: '朝阿諾河畔移動，提前 15 分鐘至烏菲茲預約取票處。', type: 'transport' , place: 'Uffizi Gallery', address: 'Piazzale degli Uffizi, 6, 50122 Firenze FI, Italy' },
+              { id: 'd6-9', time: '14:00-18:00', title: '烏菲茲美術館參觀', desc: '預約 14:00 門票。14:00-14:50 進展廳直奔最底端的卡拉瓦喬展廳。14:50-15:50 參觀達文西、米開朗基羅《聖家族》與拉斐爾。15:50 在高層露台咖啡廳休息，近距離拍攝舊宮塔樓。16:15 進入最經典的波提切利展區（欣賞《維納斯的誕生》、《春》）。', type: 'sight', note: '離開烏菲茲美術館前，內部洗手間必上！', place: 'Uffizi Gallery', address: 'Piazzale degli Uffizi, 6, 50122 Firenze FI, Italy' },
+              { id: 'd6-10', time: '18:10-18:35', title: '老橋 (維奇歐橋) 散步', desc: '走到老橋上觀看兩側珠寶老鋪。', type: 'sight', place: 'Ponte Vecchio', address: '50125 Firenze FI, Italy' },
+              { id: 'd6-11', time: '18:40-19:00', title: '冰淇淋：Gelateria La Carraia', desc: '享用當地超有名的特製奶油(Sinfonia La Carraia)、開心果 (Pistacchio)、瑞可塔起司與梨子 (Ricotta and Pear) Gelato。', type: 'food', place: 'Gelateria La Carraia', address: 'Piazza Nazario Sauro, 25/r, 50125 Firenze FI, Italy' },
+              { id: 'd6-12', time: '19:00-19:30', title: '聖三一橋拍攝「老橋粉紅全景夕落」', desc: '站在聖三一橋上向東，此時阿諾河面無波，正對著老橋，落日餘暉染成粉紫、粉紅色倒影。', type: 'sight', place: 'Ponte Santa Trinita', address: '50125 Firenze FI, Italy' },
+              { id: 'd6-13', time: '19:40-20:00', title: '飯店 Check-in：Strozzi Palace Hotel', desc: '步行返回飯店辦理正式登記入住與行李置物。', type: 'hotel', place: 'Strozzi Palace Hotel', address: 'Via de\' Monalda, 12, 50123 Firenze FI, Italy' },
+              { id: 'd6-14', time: '20:00-21:30', title: '晚餐：Trattoria Marione', desc: '享用佛羅倫斯傳統的經典燉牛肚 (Trippa alla Fiorentina) 與手工麵。', type: 'food', note: '有洗手間' , place: 'Trattoria Marione', address: 'Via della Spada, 27/r, 50123 Firenze FI, Italy' },
+              { id: 'd6-15', time: '21:30-22:00', title: '領主廣場 & 傭兵涼廊夜景', desc: '散步看舊宮外的大衛複製品以及傭兵涼廊下的古典石雕。', type: 'sight', place: 'Piazza della Signoria', address: '50122 Firenze FI, Italy' },
+              { id: 'd6-16', time: '22:00-22:30', title: '野豬噴泉', desc: '到新市場拱廊旁摸青銅野豬鼻，並投一枚硬幣，傳說這能保佑重返翡冷翠。', type: 'sight', place: 'Fontana del Porcellino', address: 'Piazza del Mercato Nuovo, 50123 Firenze FI, Italy' }
+            ]
+          },
+          {
+            day: 7,
+            date: '10月7日 星期三',
+            city: '佛羅倫斯',
+            title: '百花大圓頂《末日審判》 ➔ 主教座堂 ➔ 米開朗基羅廣場史詩落日',
+            summary: '登百花教堂圓頂，下午看天堂之門真跡，黃昏在米開朗基羅廣場看梵蒂岡圓頂與老城藍調。',
+            items: [
+              { id: 'd7-1', time: '07:30-07:50', title: '早餐：Strozzi Palace Hotel', desc: '飯店早餐。告知前台櫃檯「預約明天 (10/08) 早上 07:00 的外帶早餐盒 (Breakfast Box)」。', type: 'food', note: '出門前洗手間必上！' , place: 'Strozzi Palace Hotel', address: 'Via de\' Monalda, 12, 50123 Firenze FI, Italy' },
+              { id: 'd7-2', time: '07:50-08:00', title: '前往聖母百花大教堂Cupola入口', desc: '手持 Brunelleschi Pass 套票。入口在面對大教堂正門時的左側（北側）。', type: 'transport' , place: 'Brunelleschi\'s Dome', address: 'Piazza del Duomo, 50122 Firenze FI, Italy'},
+              { id: 'd7-3', time: '08:15-09:15', title: '聖母百花大教堂登頂', desc: '攀爬 463 級台階。最佳位置在「中段環形看台平台」（非頂端），這裡能最近距離平視瓦薩里《末日審判》巨幅濕壁畫細節。隨後登最頂俯拍紅色屋頂海。', type: 'sight', note: '狹窄封閉，幽閉恐懼不宜。', place: 'Brunelleschi\'s Dome', address: 'Piazza del Duomo, 50122 Firenze FI, Italy' },
+              { id: 'd7-4', time: '09:20-10:00', title: '聖若翰洗者洗禮堂', desc: '參觀教堂對面的洗禮堂，抬頭看耀眼奪目的金箔拜占庭風格天頂壁畫。', type: 'sight', place: 'Battistero di San Giovanni', address: 'Piazza del Duomo, 50122 Firenze FI, Italy' },
+              { id: 'd7-5', time: '10:00-11:00', title: '地底遺址 Santa Reparata + 大教堂內部', desc: '免排隊祕訣：直接從大教堂內部右側（南側）地底通道掃 Pass 進教堂，避開外部廣場超長排隊人潮。', type: 'sight', note: '地下遺址內設有洗手間。', place: 'Cripta di Santa Reparata', address: 'Piazza del Duomo, 50122 Firenze FI, Italy' },
+              { id: 'd7-6', time: '11:30-13:00', title: '午餐：Trattoria Za Za', desc: '佛羅倫斯必吃！極力推薦經典的黑松露義大利麵與松露牛排。', type: 'food', note: '餐廳內部為古代窯洞結構，離開前洗手間必上！', place: 'Trattoria Za Zà', address: 'Piazza del Mercato Centrale, 26r, 50123 Firenze FI, Italy' },
+              { id: 'd7-7', time: '13:10-15:40', title: '主教座堂博物館', desc: '位於大教堂東側。精簡路線：吉貝爾蒂被譽為「天堂之門」的青銅浮雕真跡、米開朗基羅晚年未完工的《聖殤》、多那太羅的木雕瑪利亞。', type: 'sight', note: '離開前洗手間必上。', place: 'Museo dell\'Opera del Duomo', address: 'Piazza del Duomo, 9, 50122 Firenze FI, Italy' },
+              { id: 'd7-8', time: '15:45-16:00', title: '冰淇淋：Badiani Gelato Tosinghi', desc: '點最經典的 Buontalenti (極致濃郁奶油凍) 口味。', type: 'food', place: 'Gelateria Badiani Firenze', address: 'Via dei Tosinghi, 12, 50123 Firenze FI, Italy' },
+              { id: 'd7-9', time: '16:00-17:30', title: '逛街購物', desc: '', type: 'shopping' },
+              { id: 'd7-10', time: '17:30-18:00', title: '前往米開朗基羅廣場', desc: '建議用 appTaxi 叫車（車資約 €15）或到老橋對岸「Piazza Ferrucci」站搭乘 13 號公車直達山頂。', type: 'transport' , place: 'Piazzale Michelangelo', address: 'Viale Michelangelo, 50125 Firenze FI, Italy'},
+              { id: 'd7-11', time: '18:00-19:20', title: '米開朗基羅廣場日落與藍調', desc: '趕在日落前抵達。太陽缓缓落入遠方阿諾河中軸。18:45日落後 20 分鐘天空呈現深邃紫藍調。最佳站位：面對城市右側高台。', type: 'sight', tips: '買個 All\'Antico 帕尼尼或飲料在石階上野餐，感受無與倫比的粉紅藍色交織。', place: 'Piazzale Michelangelo', address: 'Viale Michelangelo, 50125 Firenze FI, Italy' },
+              { id: 'd7-12', time: '19:40-20:00', title: '感恩橋拍攝老橋遠景', desc: '下山後走過感恩橋，向西拍攝老橋點燈在河中的黃金倒影。', type: 'sight', place: 'Ponte alle Grazie', address: '50125 Firenze FI, Italy' },
+              { id: 'd7-13', time: '20:15-21:45', title: '晚餐：All\'Antico Vinaio ', desc: '享用名震國際的大份量托斯卡尼帕尼尼三明治（松露醬、火腿、芝麻葉）。', type: 'food', place: 'All\'Antico Vinaio', address: 'Via dei Neri, 65, 50122 Firenze FI, Italy' }
+            ]
+          },
+          {
+            day: 8,
+            date: '10月8日 星期四',
+            city: '佛羅倫斯 ➔ 比薩 ➔ 佛羅倫斯',
+            title: '比薩斜塔 ➔ Da Nerbone 牛肚包 ➔ 學院美術館 ➔ 喬托鐘樓登頂',
+            summary: '區間車小站捷徑直達奇蹟廣場，下午探訪完美大衛像、喬托鐘樓金黃落日，逛百年藥妝。',
+            items: [
+              { id: 'd8-1', time: '07:00-07:20', title: '領取早餐盒', desc: '至 Strozzi Palace 飯店前台領取預訂的乾冷早餐盒。', type: 'food' , place: 'Strozzi Palace Hotel', address: 'Via de\' Monalda, 12, 50123 Firenze FI, Italy'},
+              { id: 'd8-2', time: '07:35-09:13', title: '搭區間車 (RV) 前往比薩：07:53 Firenze SMN ➔ 09:13 Pisa S. Rossore', desc: '往比薩的區間車大多在極偏遠的 18 或 19 月台，需從主月台沿 16 號月台走到底 5-7 分鐘。搭乘 07:53-09:13 的 RV 列車，車上享用早餐。', type: 'transport', note: '上車前必須在 App 內點選 Check-in 或在月台黃色小機器實體打票。Pisa S. Rossore 站離斜塔步行僅需 7-12 分鐘（比 Centrale 站近）。上車前洗手間必上！', place: 'Pisa San Rossore Railway Station', address: 'Via Andrea Pisano, 56126 Pisa PI, Italy' },
+              { id: 'd8-3', time: '09:13-09:25', title: '前往比薩奇蹟廣場', desc: '出 Rossore 無人站，沿 Via Andrea Pisano 步行 10 分鐘直抵。', type: 'transport' , place: 'Piazza dei Miracoli', address: 'Piazza del Duomo, 56126 Pisa PI, Italy'},
+              { id: 'd8-4', time: '09:25-10:30', title: '奇蹟廣場與比薩斜塔拍照', desc: '利用大教堂、草地右側大路，拍下推、背、抱斜塔的經典借位合照。', type: 'sight', note: '奇蹟廣場旁有收費公廁，可預備 1 歐元硬幣。', place: 'Torre di Pisa', address: 'Piazza del Duomo, 56126 Pisa PI, Italy' },
+              { id: 'd8-5', time: '10:30-12:08', title: '搭 RV 區間車返回：10:43 Pisa S. Rossore ➔ 12:08 Firenze SMN', desc: '乘車前務必在 App 再次完成 Check-in 手續。搭 10:43 班次直達佛羅倫斯。', type: 'transport' , place: 'Firenze Santa Maria Novella', address: 'Piazza della Stazione, 50123 Firenze FI, Italy'},
+              { id: 'd8-6', time: '12:20-13:30', title: '午餐：Da Nerbone (中央市場攤位 292)', desc: '點招牌牛肚包 (Panino con Lampredotto) 或牛肉包 (Panino con Bollito)。口訣：「Bagnato」（麵包沾飽牛肉汁），加上紅綠雙醬（紅辣、綠香）。', type: 'food', note: '中央市場二樓有極為乾淨的收費公廁，可憑消費收據 or 硬幣使用。', place: 'Da Nerbone', address: 'Mercato Centrale, Piazza del Mercato Centrale, 50123 Firenze FI, Italy' },
+              { id: 'd8-7', time: '13:40-15:30', title: '學院美術館', desc: '預約 14:00 門票。提前 15 分鐘到入口對面的 Via Ricasoli 105R 換紙本票。進入後直奔展廳大衛像（繞至身後，逆光觀察他右側手爆青筋與背部完美肌肉線條）。隨後看未完工的奴隸像。', type: 'sight', note: '出口右側設有免費洗手間，登頂前必上。', place: 'Galleria dell’Accademia di Firenze', address: 'Via Ricasoli, 58/60, 50129 Firenze FI, Italy' },
+              { id: 'd8-8', time: '15:40-15:45', title: '前往喬托鐘樓', desc: '步行 5 分鐘抵達鐘樓大堂，準備套票。', type: 'transport' , place: 'Giotto\'s Bell Tower', address: 'Piazza del Duomo, 50122 Firenze FI, Italy'},
+              { id: 'd8-9', time: '16:30-17:30', title: '喬托鐘樓登頂', desc: '預約 16:30 登頂，攀爬 414 級。此時西斜的金色強烈陽光正好灑在正對面的巨大百花大教堂圓頂上，是拍下「人與大圓頂合照」之最璀璨神聖時刻。', type: 'sight', place: 'Giotto\'s Bell Tower', address: 'Piazza del Duomo, 50122 Firenze FI, Italy' },
+              { id: 'd8-10', time: '18:10-19:00', title: '新聖母大殿廣場拍夕光', desc: '站在廣場南側（靠近車站那端），以兩座大理石方尖碑為前景拍大教堂立面。18:15 教堂受光最強，18:45 亮燈進入深藍調。', type: 'sight', place: 'Basilica di Santa Maria Novella', address: 'Piazza di Santa Maria Novella, 18, 50123 Firenze FI, Italy' },
+              { id: 'd8-11', time: '19:00-20:00', title: 'SMN 百年修道院', desc: '走進文藝復興壁畫與挑高大廳般的百年藥妝，選購經典玫瑰水、香水與陶製品。', type: 'shopping', place: 'Officina Profumo-Farmaceutica di Santa Maria Novella', address: 'Via della Scala, 16, 50123 Firenze FI,義大利Italy' },
+              { id: 'd8-12', time: '20:15-20:45', title: 'Venchi Cioccolato e Gelato', desc: '觀賞現裝巧克力流水，點 Gourmet Cone 巧克力現淋甜筒，推薦口味：Cuor di Cacao (75% 黑巧克力) 、Pistachio (開心果) 、Cremino (三層巧克力磚口味)、Nougatine (焦糖榛果)。', type: 'food', place: 'Venchi Cioccolato e Gelato', address: ' Via dei Calzaiuoli, 65, 50122 Firenze FI, Italy' },
+              { id: 'd8-13', time: '21:00-22:30', title: '晚餐：Trattoria Dall\'Oste', desc: '在名店享用豪華的托斯卡尼丁骨牛排 (Bistecca alla Fiorentina) 奢華盛宴。', type: 'food', place: 'Trattoria Dall\'Oste', address: 'Borgo S. Lorenzo, 31, 50121 Firenze FI, Italy' }
+            ]
+          },
+          {
+            day: 9,
+            date: '10月9日 星期五',
+            city: '佛羅倫斯/羅馬',
+            title: '晨拍大教堂 ➔ Italo 飛馳羅馬 ➔ 西班牙階梯破船藍調',
+            summary: '高鐵前往羅馬，安全防扒搬運行李，傍晚在西班牙階梯欣賞浪漫晚霞藍調。',
+            items: [
+              { id: 'd9-1', time: '06:00-06:20', title: '晨拍聖母百花大教堂', desc: '清晨微光下，廣場無人，拍攝極具靜謐感的百花大教堂與喬托鐘樓。', type: 'sight', place: 'Brunelleschi\'s Dome', address: 'Piazza del Duomo, 50122 Firenze FI, Italy' },
+              { id: 'd9-2', time: '06:35-07:00', title: 'Forno Ghibellina', desc: '購買新鮮出爐的牛角麵包或傳統帕尼尼，當作高鐵餐點。', type: 'food', place: 'Forno Ghibellina', address: 'Via Ghibellina, 41r, 50122 Firenze FI, Italy' },
+              { id: 'd9-3', time: '07:15-07:30', title: '領主廣場、傭兵涼廊、野豬噴泉散步拍照', desc: '享受無人的清晨廣場，摸野豬噴泉祈願。', type: 'sight', place: 'Piazza della Signoria', address: '50122 Firenze FI, Italy' },
+              { id: 'd9-4', time: '07:30-08:30', title: '早餐：Strozzi Palace Hotel', desc: '在古典大堂享用早餐。', type: 'food', note: '出發前洗手間必上！' , place: 'Strozzi Palace Hotel', address: 'Via de\' Monalda, 12, 50123 Firenze FI, Italy'},
+              { id: 'd9-5', time: '08:30-09:00', title: '辦理退房手續', desc: '前台結帳並退房。', type: 'hotel' , place: 'Strozzi Palace Hotel', address: 'Via de\' Monalda, 12, 50123 Firenze FI, Italy'},
+              { id: 'd9-6', time: '09:00-09:15', title: '前往佛羅倫斯 SMN 車站', desc: '至車站。進站看板確認 ITALO + 車次 + ROMA TERMINI 月台。', type: 'transport', note: '建議提前 15 分鐘在月台邊確認車廂 (Carrozza) 區域。' , place: 'Firenze Santa Maria Novella', address: 'Piazza della Stazione, 50123 Firenze FI, Italy'},
+              { id: 'd9-7', time: '09:40-11:40', title: '搭 Italo：10:03 Firenze SMN ➔ 11:40 Roma Termini', desc: '高鐵時速 300 公里穿越南下。車尾大行李處放好行李，注意看好防扒。', type: 'transport', place: 'Roma Termini', address: 'Via Giovanni Giolitti, 40, 00185 Rome, RM, Italy' },
+              { id: 'd9-8', time: '12:00-12:30', title: 'iQ Hotel Roma 寄放行李', desc: '🚨 避扒行李安全路線：高鐵降落後停留在地面層，朝 Via Giolitti 側出口走出，走大馬路外圍，再轉進 Via Firenze 直達飯店。千萬不要走地鐵層（小偷高危區）！', type: 'hotel', note: '飯店大堂提供免費水、咖啡與洗手間，必上！', place: 'iQ Hotel Roma', address: 'Via Firenze, 8, 00184 Roma RM, Italy' },
+              { id: 'd9-9', time: '12:40-13:40', title: '逛平價服飾店 Alcott', desc: '在 Termini 旁，選購高性價比的義式休閒衣服。', type: 'shopping', place: 'Alcott Roma', address: 'Via Nazionale, 79/80/81, 00184 Roma RM, Italy' },
+              { id: 'd9-10', time: '13:40-14:20', title: 'Tigre 超市採購', desc: '採買瓶裝礦泉水、氣泡水與零食。', type: 'shopping', place: 'Supermercato Tigre', address: 'Via Nazionale, 213, 00184 Roma RM, Italy' },
+              { id: 'd9-11', time: '14:20-15:10', title: 'Pam Local 超市採購', desc: '購買水果與備用輕食。', type: 'shopping', place: 'Pam Local Supermarket', address: 'Via delle Quattro Fontane, 38, 00184 Roma RM, 義Italy' },
+              { id: 'd9-12', time: '15:20-16:10', title: 'iQ Hotel Roma 辦理入住', desc: '回飯店前台辦理 Check-in 登記入住，將行李放回舒適客房。', type: 'hotel', note: '房內洗手間可使用', place: 'iQ Hotel Roma', address: 'Via Firenze, 8, 00184 Roma RM, Italy' },
+              { id: 'd9-13', time: '16:30-18:00', title: '晚餐：That\'s Amore Restaurant', desc: '超熱門餐館。極力推薦招牌海鮮義大利麵 (Linguine allo Scoglio)、炭烤牛排與羊排，餐後點香滑烤布蕾。', type: 'food', place: 'That\'s Amore', address: 'Via in Arcione, 115, 00187 Roma RM, Italy' },
+              { id: 'd9-14', time: '18:10-19:20', title: '西班牙廣場階梯藍調落日', desc: '漫步至破船噴泉。📸 最佳拍攝點：聖三一教堂前方平台 (41.9061, 12.4832)。往階梯下拍，18:50-19:15 經典深藍色夜空與老街點燈中軸線完美對稱。噴泉旁 (41.90599, 12.48278) 仰拍聖三一。', type: 'sight', place: 'Piazza di Spagna', address: 'Piazza di Spagna, 00187 Roma RM, Italy' },
+              { id: 'd9-15', time: '19:20-19:50', title: 'Pompi 提拉米蘇專賣店', desc: '購買最著名的草莓提拉米蘇 (Tiramisu Fragola)，可坐在階梯旁（注意不要踩到古蹟）。', type: 'food', note: '有退稅問題建議預留 20 分鐘處理。', place: 'Pompi Tiramisù', address: 'Via della Croce, 82, 00187 Roma RM, Italy' },
+              { id: 'd9-16', time: '20:00-21:30', title: '逛 La Rinascente Rome 百貨購物', desc: '羅馬精品百貨，欣賞古老地下水道遺址展示並逛名牌。', type: 'shopping', note: '百貨頂樓設有乾淨洗手間必上！', place: 'Rinascente Roma Via del Tritone', address: 'Via del Tritone, 61, 00187 Roma RM, Italy' },
+              { id: 'd9-17', time: '21:45-21:50', title: '回iQ Hotel Roma', desc: '沿著 Via del Tritone 往上走，抵達 Piazza Barberini (巴貝里尼廣場)，沿著 Via Barberini 走一小段，接著轉進 Via Firenze 即可到達飯店。。或直接在百貨叫 Uber / Free Now 計程車 (車資約 €12-18)。', type: 'hotel', note:'精確定位： La Rinascente 有多個出口，建議在地圖上直接設定為 「Via del Tritone, 61」(大門口)或稍微往前走到 Piazza Barberini 叫車，那邊車流動線較順，司機更容易停靠。', place: 'iQ Hotel Roma', address: ' Via Firenze, 8, 00184 Roma RM, Italy'  }
+            ]
+          },
+          {
+            day: 10,
+            date: '10月10日 星期六',
+            city: '羅馬',
+            title: '聖依納爵假穹頂 ➔ 萬神殿聖光 ➔ 聖天使堡點燈 ➔ 特雷維璀璨夜拍',
+            summary: '上午體驗 3D 錯視畫，正午沐浴萬神殿直射眼窗聖光，黃昏拍台伯河絕美藍調。',
+            items: [
+              { id: 'd10-1', time: '07:00-08:00', title: '早餐：iQ Hotel Roma', desc: '在頂樓花園露台悠閒享用早餐。', type: 'food', note: '出發前洗手間必上！' , place: 'iQ Hotel Roma', address: ' Via Firenze, 8, 00184 Roma RM, Italy'},
+              { id: 'd10-2', time: '08:30-09:15', title: '聖依納爵堂 ➔ 哈德良神廟 ➔ 圓柱廣場', desc: '進聖依納爵堂，站在中殿地板黃金色圓形大理石標誌上往上看。欣賞安德烈亞·波佐手繪的 3D 假穹頂幻覺，大為震撼。隨後拍圓柱廣場馬可奧里略圓柱細節。', type: 'sight', place: 'Chiesa di Sant\'Ignazio di Loyola', address: 'Piazza di Sant\'Ignazio, 00186 Roma RM, Italy' },
+              { id: 'd10-3', time: '09:20-09:50', title: '金杯咖啡', desc: '喝招牌咖啡冰沙 (Granita di Caffè con Panna)，站立吧台前享用，體驗最地道羅馬咖啡文化。', type: 'food', note: '內設有洗手間必上', place: 'La Casa del Caffè Tazza d\'Oro', address: 'Via degli Orfani, 84, 00186 Roma RM, Italy' },
+              { id: 'd10-4', time: '10:00-10:50', title: '聖王路易堂 ➔ 納沃納廣場', desc: '進聖王路易堂看卡拉瓦喬三幅傑作《聖馬太蒙召》、《聖馬太與天使》與《聖馬太殉教》。隨後至納沃納廣場拍貝尼尼四河噴泉、海神噴泉、摩爾人噴泉。', type: 'sight', place: 'Chiesa di San Luigi dei Francesi', address: 'Piazza di S. Luigi de\' Francesi, 00186 Roma RM, Italy' },
+              { id: 'd10-5', time: '11:00-11:30', title: '冰淇淋：Giolitti', desc: '造訪羅馬最古老 Gelateria，點開心果、香檳或濃郁黑巧克力口味。', type: 'food', place: 'Giolitti', address: 'Via Uffici del Vicario, 40, 00186 Roma RM, Italy' },
+              { id: 'd10-6', time: '11:35-11:50', title: '萬神殿排隊安檢', desc: '手持預約的 12:00 門票，於入口預約通道排隊安檢。', type: 'transport' , place: 'Pantheon', address: 'Piazza della Rotonda, 00186 Roma RM, Italy' },
+              { id: 'd10-7', time: '12:00-13:00', title: '萬神殿', desc: '預約 12:00 門票。📸 聖光拍攝點：大殿地板正中心 (41.89861, 12.47687)。正午時分，強烈太陽光柱直接從直徑 9 米的眼窗 (Oculus) 穿透，照亮神廟內部，神聖磅礴。', type: 'sight', place: 'Pantheon', address: 'Piazza della Rotonda, 00186 Roma RM, Italy' },
+              { id: 'd10-8', time: '13:10-14:00', title: '午餐：Enoteca Corsi', desc: '享用超地道的經典古樸小館羅馬料理。', type: 'food', note: '離開前洗手間必上。', place: 'Enoteca Corsi', address: 'Via del Gesu, 87/88, 00186 Roma RM, Italy' },
+              { id: 'd10-9', time: '14:15-14:40', title: '銀塔廣場', desc: '看凱撒大帝遇刺古戰場遺址，沿步道觀看流浪貓咪保護中心。', type: 'sight', place: 'Largo di Torre Argentina', address: 'Largo di Torre Argentina, 00186 Roma RM, Italy' },
+              { id: 'd10-10', time: '14:50-15:20', title: 'Gelateria La Romana dal 1947', desc: '推薦口味：Pistachio（開心果）、 Crema dal 1947（招牌奶油）、 Chocolate（濃郁型）。', type: 'food', place: 'Gelateria La Romana dal 1947', address: 'Piazza di S. Andrea della Valle, zona Piazza Navona, 1, 00186 Roma RM, Italy' },
+              { id: 'd10-11', time: '15:30-17:30', title: '晚餐：Cantina e Cucina', desc: '享用傳統 Carbonara（培根蛋麵）、 羅馬薄脆披薩、 肉丸。備案-La Nuova Piazzetta Navona(海鮮義大利麵、超大份量提拉米蘇、烤肉拼盤、千層麵 (Lasagna))。', type: 'food', note: '店內洗手間必上', place: 'Cantina & Cucina', address: 'Via del Governo Vecchio, 87, 00186 Roma RM, Italy' },
+              { id: 'd10-12', time: '18:00-19:20', title: '聖天使橋 & 聖天使堡絕美藍調', desc: '📸 最佳攝影位：聖天使橋中央靠城堡 1/3 處 (41.90306, 12.46630)。18:00 斜陽金黃、18:27 日落，18:45-19:05 聖天使堡點燈之璀璨藍調時刻，完美倒影映在台伯河面。', type: 'sight', place: 'Castel Sant\'Angelo', address: 'Lungotevere Castello, 50, 00193 Roma RM, Italy' },
+              { id: 'd10-13', time: '19:30-20:00', title: '納沃納廣場夜間散步', desc: '夜拍點燈下的四河噴泉，別有一番巴洛克奢美感。', type: 'sight', place: 'Piazza Navona', address: 'Piazza Navona, 00186 Roma RM, Italy' },
+              { id: 'd10-14', time: '20:10-20:30', title: '哈德良神廟 & 圓柱廣場夜景', desc: '拍雄偉柯林斯神廟石柱在夜光中的立體剪影。', type: 'sight', place: 'Tempio di Adriano', address: 'Piazza di Pietra, 00186 Roma RM, Italy' },
+              { id: 'd10-15', time: '20:40-21:10', title: '特雷維噴泉 (許願池) 夜景', desc: '📸 最佳夜拍位：右側石柱區 (41.90095, 12.48328)。利用右側精美巴洛克石雕做前景，拍出無人頭干擾、通亮奢華的許願池大景。', type: 'sight', place: 'Fontana di Trevi', address: 'Piazza di Trevi, 00187 Roma RM, Italy' },
+              { id: 'd10-16', time: '21:30-21:40', title: '回iQ Hotel Roma', desc: '回飯店休息，準備明日競技場深度探索。', type: 'hotel' , place: 'iQ Hotel Roma', address: ' Via Firenze, 8, 00184 Roma RM, Italy'}
+            ]
+          },
+          {
+            day: 11,
+            date: '10月11日 星期日',
+            city: '羅馬',
+            title: '競技場地底深度探索 ➔ 羅馬廣場 ➔ 四輪馬車露台 360 度日落',
+            summary: '進入競技場地底層，下午探訪古羅馬帝國遺址，黃昏登上祖國祭壇玻璃電梯看羅馬全景。',
+            items: [
+              { id: 'd11-1', time: '07:00-08:00', title: '早餐：iQ Hotel Roma', desc: '飯店頂樓早餐。告知櫃檯「預約明天 (10/12) 早上 06:30 的外帶早餐盒 (Breakfast Box)」。', type: 'food', note: '出門前洗手間必上！' , place: 'iQ Hotel Roma', address: ' Via Firenze, 8, 00184 Roma RM, Italy'},
+              { id: 'd11-2', time: '08:20-09:00', title: '搭地鐵 B 線：Termini → Colosseo', desc: '前往羅馬競技場。步行 7-9 分鐘至 Termini 車站下樓，搭地鐵 B 線往 Laurentina 方向 2 站至 Colosseo 站。', type: 'transport' , note:'🚨 週日地鐵 B 線時常工程維修減班，若不順，直接叫 Uber (車程 8-10 分，車資約 €10-15)。', place: 'Colosseo', address: 'P.za del Colosseo, 00184 Roma RM, Italy'},
+              { id: 'd11-3', time: '09:00-09:30', title: '排隊安檢 + 拍攝凱旋門', desc: '在君士坦丁凱旋門前排隊，可退至左側草地，將凱旋門與競技場同時入鏡。隨後由預約通道排隊安檢。', type: 'transport', place: 'Arco di Costantino', address: 'Piazza del Colosseo, 00184 Roma RM, Italy' },
+              { id: 'd11-4', time: '09:30-11:30', title: '羅馬競技場 (Colosseo) 深度參觀', desc: '預約 09:45 門票。包含地下層（野獸與機關地下走廊），一二層觀景區，仰望龐大圓形拱券結構。', type: 'sight', note: '內部洗手間非常乾淨極推薦，離開前必上！', place: 'Colosseum', address: 'Piazza del Colosseo, 1, 00184 Roma RM, Italy' },
+              { id: 'd11-5', time: '11:30-12:15', title: '競技場高位攝影 (Via Nicola Salvi 平台)', desc: '📸 秘密高台 3 站點 (41.89085, 12.49230)：1. 蒙特奧皮奧花園：地勢高，遊客極稀少，完全平視競技場大景。2. 綠蔭樹下：繼續往右走 50 公尺樹蔭處，以綠葉為自然畫框。3. 小人行橋：跨馬路小型鐵鋼橋，能拍到無背景人群遮擋的乾淨鬥獸場人像合影。', type: 'sight' },
+              { id: 'd11-6', time: '12:30-14:00', title: '午餐：Trattoria Luzzi', desc: '大啖羅馬當地老牌的培根蛋奶麵 (Carbonara) 與手工平價披薩。', type: 'food', note: '店內洗手間必上', place: 'Trattoria Luzzi', address: 'Via Celimontana, 1, 00184 Roma RM, Italy' },
+              { id: 'd11-7', time: '14:00-15:00', title: '帕拉汀山 ➔ 弗拉維安宮 ➔ 奧古斯都宮 ➔ Terrazza Belvedere del Palatino', desc: '自大競技場旁的 Via di San Gregorio 入口進入。登上羅馬起點之丘，前往 Belvedere Palatino 露台俯瞰整座古羅馬廣場全景。', type: 'sight', place: 'Palatine Hill', address: '00186 Roma RM, Italy' },
+              { id: 'd11-8', time: '15:00-15:40', title: '古羅馬廣場', desc: '沿途觀賞提圖斯凱旋門 → 維納斯和羅馬神廟 → 貞女之家 → 安東尼諾與法斯提娜神殿 → 佛卡圓柱 → 元老院Curia Julia → 塞維魯凱旋門 → 農神廟 → 維斯帕先和提圖斯神廟 → 卡比托利歐山。', type: 'sight', place: 'Roman Forum', address: 'Via della Salara Vecchia, 5/6, 00186 Roma RM, Italy' },
+              { id: 'd11-9', time: '16:00-16:50', title: '維托里亞諾中層咖啡廳休息', desc: '在 Caffetteria Italia 喝咖啡享用輕食，緩解雙腿疲勞。', type: 'food', note: '洗手間必上', place: 'Altare della Patria', address: 'Piazza Venezia, 00186 Roma RM, Italy' },
+              { id: 'd11-10', time: '17:00-18:50', title: '祖國祭壇四輪馬車露台 → 威尼斯廣場', desc: '購票（約€17-18）搭乘全透明玻璃電梯登上頂層 Terrazza delle Quadrighe。360度俯瞰羅馬。📸 南面：俯拍古羅馬遺址群與鬥獸場；西面：拍萬神殿與聖彼得大穹頂落日。', type: 'sight', place: 'Terrazza delle Quadrighe', address: 'Piazza Venezia, 00186 Roma RM, Italy' },
+              { id: 'd11-11', time: '18:50-19:35', title: '夜景：威尼斯廣場 → 帝國廣場大道 → 羅馬競技場', desc: '📸 帝國大道經典站位 (41.89267, 12.48688)，看寬闊大道與打著金色燈光的凱旋門、古蹟交織。', type: 'sight' },
+              { id: 'd11-12', time: '19:40-20:15', title: '晚餐：Alle Carrette 外帶', desc: '享用脆薄的經典羅馬老店外帶柴燒披薩。', type: 'food', place: 'Pizzeria Alle Carrette', address: 'Via della Madonna dei Monti, 95, 00184 Roma RM, Italy' },
+              { id: 'd11-13', time: '20:15-20:50', title: '搭地鐵 B 線：Colosseo → Termini', desc: '從 Colosseo 站（走主路帝國大道側入口比較安全亮堂）往 Jonio / Rebibbia 方向 2 站回 Termini，步行 7-9 分鐘回飯店。', type: 'transport' , place: 'Termini', address: 'Via Amedeo VIII, 00185 Roma RM, Italy'},
+              { id: 'd11-14', time: '21:00-22:00', title: 'iQ Hotel Roma 桑拿', desc: '預約飯店 4 樓的 private sauna，享受完全私密、高溫排汗的芬蘭烤箱浴，徹底滿血復活雙腿。', type: 'hotel' , place: 'iQ Hotel Roma', address: ' Via Firenze, 8, 00184 Roma RM, Italy'}
+            ]
+          },
+          {
+            day: 12,
+            date: '10月12日 星期一',
+            city: '羅馬 ➔ 梵蒂岡 ➔ 羅馬',
+            title: '聖彼得廣場安檢 ➔ 登頂鑰匙廣場 ➔ 聖殿神神聖光束 ➔ 莫莫天梯',
+            summary: '清晨衝聖彼得安檢，見證大教堂上午「神聖光路」，下午大逛博物館與西斯汀禮拜堂。',
+            items: [
+              { id: 'd12-1', time: '06:30-06:45', title: '領取早餐盒', desc: '至飯店前台領取預訂的早餐盒。', type: 'food', note: '出發前洗手間必上！' , place: 'iQ Hotel Roma', address: ' Via Firenze, 8, 00184 Roma RM, Italy'},
+              { id: 'd12-2', time: '06:50', title: '前往 Repubblica 地鐵站', desc: '早早出門，步行 4-5 分鐘。', type: 'transport' , place: 'Repubblica', address: 'P.za della Repùbblica, 00185 Roma RM, Italy'},
+              { id: 'd12-3', time: '07:00', title: '搭地鐵 A 線：Repubblica ➔ Ottaviano', desc: '往 Battistini 方向搭 5 站，車程約 10-12 分鐘。', type: 'transport' , place: 'Ottaviano', address: '00192 Roma RM, Italy'},
+              { id: 'd12-4', time: '07:15-08:00', title: '出站與廣場排隊', desc: 'Ottaviano 站跟著「San Pietro」指標，步行 12 分抵達聖彼得廣場安檢排。邊排隊邊吃早餐。🚨 安檢前廣場洗手間必上：面向大教堂，右手邊聖彼得廣場右側柱廊內凹處有公廁，排隊前務必先去！', type: 'transport', place: 'Piazza San Pietro', address: '00120 Città del Vaticano' },
+              { id: 'd12-5', time: '08:00-08:20', title: '安檢通關，直衝登頂入口', desc: '安檢完立刻右轉，衝向「Cupola/Dome with lift」專屬售票入口與電梯。', type: 'transport' , place: 'Basilica di San Pietro', address: 'Piazza San Pietro, 00120 Città del Vaticano, 梵蒂岡'},
+              { id: 'd12-6', time: '08:20-08:45', title: '大圓頂內環看台攝影 (上帝視角)', desc: '電梯出來後抵達內環看台。近距離拍圓頂巨幅馬賽克字，俯瞰貝尼尼青銅聖體傘與拉丁銘文。', type: 'sight', place: 'Basilica di San Pietro', address: 'Piazza San Pietro, 00120 Città del Vaticano, 梵蒂岡' },
+              { id: 'd12-7', time: '08:45-09:15', title: '登頂圓頂頂端戶外平台', desc: '沿著最後 320 級窄石階梯盤旋而上。在頂部大露台俯拍著名的「天堂鑰匙形狀」聖彼得廣場經典航拍照！', type: 'sight', place: 'Basilica di San Pietro', address: 'Piazza San Pietro, 00120 Città del Vaticano, 梵蒂岡' },
+              { id: 'd12-8', time: '09:20-09:30', title: '圓頂下至大教堂側廊', desc: '下電梯後直導大教堂本殿內部，在聖體傘附近。', type: 'transport' , place: 'Basilica di San Pietro', address: 'Piazza San Pietro, 00120 Città del Vaticano, 梵蒂岡'},
+              { id: 'd12-9', time: '09:30-10:15', title: '大教堂內部「神聖光束」黃金拍攝', desc: '📸 神聖光路座標 (41.90217, 12.45394)：站在中央主大走道，背對祭壇朝向大門。早上 09:30-11:00 陽光自左側高窗穿透，在微塵中呈現無比通亮立體的神光！', type: 'sight' , place: 'Basilica di San Pietro', address: 'Piazza San Pietro, 00120 Città del Vaticano, 梵蒂岡'},
+              { id: 'd12-10', time: '10:15-11:30', title: '參觀米開朗基羅《聖殤》與貝尼尼聖體傘', desc: '欣賞大理石變肉身般驚人神技的《皮耶塔》塑像與巴洛克黑金青銅聖體傘。', type: 'sight', place: 'Basilica di San Pietro', address: 'Piazza San Pietro, 00120 Città del Vaticano, 梵蒂岡' },
+              { id: 'd12-11', time: '11:30-12:15', title: '午餐：Pastasciutta', desc: '大啖平價羅馬經典羊乳酪意麵 (Cacio e Pepe) 或番茄培根 Amatriciana。', type: 'food' , note: '‼️預辦登機，網路報到選位' , place: 'Pastasciutta', address: 'Via delle Grazie, 5, 00193 Roma RM, Italy' },
+              { id: 'd12-12', time: '12:15-13:00', title: '前往梵蒂岡博物館安檢', desc: '步行 12 分至博物館外牆，預約通道過安檢取票。', type: 'transport', place: 'Musei Vaticani', address: '00120 Vatican City, 梵蒂岡' },
+              { id: 'd12-13', time: '13:00-17:20', title: '梵蒂岡博物館', desc: '預約 13:00 門票。路線：右轉繪畫館 -> 松果中庭 -> 八角中庭看《勞孔像》與《阿波羅》-> 上樓 -> 蠟燭廊 -> 掛毯廊 -> 地圖長廊天頂黃金浮雕 -> 拉斐爾畫室《雅典學院》 -> 西斯汀禮拜堂《創世紀》與《最後的審判》。', type: 'sight', note: '進入西斯汀禮拜堂請保持安靜，嚴禁拍照。館內多處設有洗手間。', place: 'Musei Vaticani', address: '00120 Vatican City, 梵蒂岡' },
+              { id: 'd12-14', time: '17:20-18:00', title: '博物館出口莫莫雙螺旋幾何天梯拍景', desc: '📸 出口幾何天梯 (41.90649, 12.45362)。站在最頂端用超廣角鏡頭俯拍，由 Giuseppe Momo 設計的雙螺旋幾何天梯。', type: 'sight', place: 'Vatican Museums Spiral Staircase', address: 'Viale Vaticano, 00120 Città del Vaticano' },
+              { id: 'd12-15', time: '18:20-20:00', title: '晚餐：Tonnarello San Pietro', desc: '享用傳統的 Cacio e Pepe 義大利麵與入口即化的經典羅馬燉牛尾 (Coda alla Vaccinara)。', type: 'food', place: 'Tonnarello San Pietro', address: 'Via di Porta Cavalleggeri, 27, 00165 Roma RM, Italy' },
+              { id: 'd12-16', time: '20:00-20:30', title: '老橋冰淇淋', desc: '大啖冰淇淋。', type: 'food', place: 'Old Bridge Gelateria', address: 'Viale dei Bastioni di Michelangelo, 5, 00192 Roma RM, Italy' },
+              { id: 'd12-17', time: '20:35-21:00', title: '搭地鐵 A 線：Ottaviano → Repubblica ', desc: '往 Anagnina 方向搭 5 站回 Repubblica 站。', type: 'transport' , place: 'Repubblica', address: 'P.za della Repùbblica, 00185 Roma RM, Italy'},
+              { id: 'd12-18', time: '21:00-22:00', title: 'iQ Hotel Roma 桑拿', desc: '預約飯店 4 樓的 private sauna，享受完全私密、高溫排汗的芬蘭烤箱浴，徹底滿血復活雙腿。', type: 'hotel' , place: 'iQ Hotel Roma', address: ' Via Firenze, 8, 00184 Roma RM, Italy'}
+            ]
+          },
+          {
+            day: 13,
+            date: '10月13日 星期二',
+            city: '羅馬',
+            title: '空曠許願池晨拍 ➔ 聖母大殿 ➔ 聖泰雷莎狂喜 ➔ 蘋丘火紅日落',
+            summary: '清晨拍攝空無一人的許願池，下午參觀博爾蓋塞大理石奇蹟，黃昏在蘋丘看羅馬火紅夕陽。',
+            items: [
+              { id: 'd13-1', time: '05:20-05:50', title: '前往特雷維噴泉 (許願池)', desc: '凌晨 05:20 早起出門，約 05:50 抵達（此時基本完全無遊客）。', type: 'transport' , place: 'Fontana di Trevi', address: 'Piazza di Trevi, 00187 Roma RM, Italy'},
+              { id: 'd13-2', time: '05:50-06:35', title: '清晨特雷維噴泉 3 大黃金拍法', desc: '📸 拍法：1. 正中央低角度手機貼近水面（拍出宏偉與水面對稱）；2. 右側石柱區 (41.90095, 12.48328) 作為前景框住噴泉與海神雕塑；3. 左側 45 度半對稱角，極具張力。拍完回飯店早餐。', type: 'sight', place: 'Fontana di Trevi', address: 'Piazza di Trevi, 00187 Roma RM, Italy' },
+              { id: 'd13-3', time: '07:00-08:00', title: '早餐：iQ Hotel Roma', desc: '飯店大堂吃早餐。告知櫃檯「預約明天 (10/14) 早上 06:00 外帶早餐盒 (Breakfast Box)」。', type: 'food', note: '出發前洗手間必上！' , place: 'iQ Hotel Roma', address: ' Via Firenze, 8, 00184 Roma RM, Italy'},
+              { id: 'd13-4', time: '08:10-09:10', title: '聖母大殿', desc: '看格狀金箔天花板與中殿兩側五世紀早期基督教馬賽克。主祭壇下方看耶穌搖籃殘片。主祭壇 right side 後方尋找貝尼尼極其平凡的家族墓地磚（僅刻有名字），極簡與大殿的華麗形成強烈對比。', type: 'sight', place: 'Basilica Papale di Santa Maria Maggiore', address: 'Piazza di Santa Maria Maggiore, 42, 00185 Roma RM, Italy' },
+              { id: 'd13-5', time: '09:25-10:00', title: '勝利之后聖母堂', desc: '進教堂看右手邊柯納洛小堂《聖泰雷莎的狂喜》。💡 點燈神技：投幣 2 歐硬幣開啟黃色專業照明。燈光打亮細緻衣服褶皺與天使笑容，巴洛克戲劇感極致呈現！', type: 'sight', place: 'Santa Maria della Vittoria', address: 'Via XX Settembre, 17, 00187 Roma RM, Italy' },
+              { id: 'd13-6', time: '10:10-10:30', title: '共和國廣場', desc: '欣賞廣場中心的仙女噴泉與半圓形宏大新古典主義建築拱廊。', type: 'sight', place: 'Piazza della Repubblica', address: 'P.za della Repùbblica, 00185 Roma RM,Italy' },
+              { id: 'd13-7', time: '10:30-11:30', title: '天使與殉教者聖母大殿', desc: '戴克里先浴場廢墟改建。看高聳古典花崗岩柱與拱頂。觀賞地板著名的「黃銅子午線日晷」，陽光會自高小孔精準射入。', type: 'sight', place: 'Basilica di Santa Maria degli Angeli e dei Martiri', address: 'Piazza della Repubblica, 00185 Roma RM, Italy' },
+              { id: 'd13-8', time: '11:45-12:10', title: '冰淇淋：Come il Latte', desc: '推薦口味：咸焦糖 (Salted Caramel / Caramello Salato)、 開心果 (Pistacchio)、大米風味 (Riso)，一定要選甜筒，並請店員在底部注入 Dark Chocolate Sauce。加鮮奶油 (Panna)。', type: 'food', place: 'Come il Latte', address: 'Via Silvio Spaventa, 24/26, 00187 Roma RM, Italy' },
+              { id: 'd13-9', time: '12:10-13:00', title: '午餐：Pinsere', desc: '大啖羅馬當地最高級的長方形特色脆皮 Pinsa（多種起司蔬菜火腿任選）。', type: 'food', place: 'Pinsere Roma', address: 'Via Flavia, 98, 00187 Roma RM, Italy' },
+              { id: 'd13-10', time: '13:00-13:15', title: '前往博爾蓋塞美術館', desc: '搭計程車或步行穿過翠綠大公園前往美術館。', type: 'transport' , place: 'Borghese Gallery', address: 'Piazzale Scipione Borghese, 5, 00197 Roma RM, Italy' },
+              { id: 'd13-11', time: '13:20-16:00', title: '博爾蓋塞美術館', desc: '預約 14:00 門票。欣賞貝尼尼二十多歲神作《阿波羅與黛芙妮》（繞其一圈欣賞手指化為樹葉、大理石肌肉化為粗糙木紋變身奇蹟）。', type: 'sight', note: '離開前，寄物處旁洗手間必上！', place: 'Borghese Gallery', address: 'Piazzale Scipione Borghese, 5, 00197 Roma RM, Italy' },
+              { id: 'd13-12', time: '16:10-16:40', title: '博爾蓋塞公園散步 ➔ 人民廣場', desc: '朝向 Porta del Popolo (人民門) 散步下山，進入開闊的人民廣場。', type: 'transport', place: 'Piazza del Popolo', address: 'Piazza del Popolo, 00187 Roma RM, Italy' },
+              { id: 'd13-13', time: '16:40-17:10', title: '人民聖母教堂', desc: '看基奇小堂（拉斐爾設計貝尼尼雕刻）。前往徹拉西小堂欣賞卡拉瓦喬《聖保羅的歸化》。💡 投幣點燈：投幣 2 歐元開啟 1 分鐘照明，才能完美拍出大師招牌的 Chiaroscuro 明暗對照法。', type: 'sight', place: 'Basilica Parrocchiale di Santa Maria del Popolo', address: 'Piazza del Popolo, 12, 00187 Roma RM, Italy' },
+              { id: 'd13-14', time: '17:30-19:00', title: '蘋丘俯瞰羅馬日落', desc: '📸 蘋丘觀景台最佳站點 (41.91092, 12.47684)。正對著西面。看火紅落日沉落於遠方聖彼得大圓頂後方，人民廣場方尖碑拉出長影。', type: 'sight', place: 'Pincio Promenade', address: 'Viale Gabriele D\'Annunzio, 00187 Roma RM, Italy' },
+              { id: 'd13-15', time: '19:00-19:30', title: '搭地鐵 A 線：Flaminio ➔ Repubblica', desc: '往 Anagnina 方向搭乘 3 站。', type: 'transport' , place: 'Repubblica', address: 'P.za della Repùbblica, 00185 Roma RM, Italy'},
+              { id: 'd13-16', time: '19:30-20:30', title: 'iQ Hotel Roma 桑拿', desc: '利用晚宴前享受私人烤箱，放鬆大腿肌群。', type: 'hotel' , place: 'iQ Hotel Roma', address: ' Via Firenze, 8, 00184 Roma RM, Italy'},
+              { id: 'd13-17', time: '20:45-22:15', title: '晚餐：Ristorante Alessio', desc: '享用龍蝦麵(Linguine all\'astice)、烤牛排切片 (Tagliata di Manzo)、丁骨牛排 (Bistecca alla Fiorentina)、羅馬跳嘴肉片(Saltimbocca alla Romana)、提拉米蘇，圓滿倒數。', type: 'food', place: 'Ristorante Alessio', address: 'Via Viminale, 2/g, 00184 Roma RM, Italy' }
+            ]
+          },
+          {
+            day: 14,
+            date: '10月14日 星期三',
+            city: '羅馬 ➔ 台北',
+            title: '離境！最深月台步行 ➔ Leonardo Express 機場特快 ➔ T3 退稅',
+            summary: '高鐵站Via Giolitti 進入地面層避扒，Leonardo Express 前往達文西機場辦理海關退稅。',
+            items: [
+              { id: 'd14-1', time: '05:50-06:00', title: 'iQ Hotel Roma 退房並領取早餐盒', desc: '前台結帳領取餐盒。拖行李步行 10 分鐘直抵羅馬 Termini 車站。', type: 'food', note: '退房前大堂洗手間必上！' , place: 'iQ Hotel Roma', address: ' Via Firenze, 8, 00184 Roma RM, Italy'},
+              { id: 'd14-2', time: '06:00-06:12', title: '前往Roma Termini 車站', desc: '保持警惕！從 Via Giolitti 進入地面大廳，千萬不要走不安全的地鐵層入口。直奔 Binari/Tracks 主月台大廳。', type: 'transport', place: 'Roma Termini', address: 'Via Giovanni Giolitti, 40, 00185 Rome, RM, Italy'  },
+              { id: 'd14-3', time: '06:12-06:18', title: '查看電子看板 ➔ 前往 23-27 月台', desc: '確認 Leonardo Express 所在月台。🚨 重要提醒：機場快線通常在極深處 23-27 月台，從主大堂走進去需要 5-7 分鐘。請走地面層一路往最深處走到底。', type: 'transport' , note: '進站 → 右轉 → 走到底', place: 'Roma Termini', address: 'Via Giovanni Giolitti, 40, 00185 Rome, RM, Italy' },
+              { id: 'd14-4', time: '06:18-06:20', title: '月台電子檢票進站', desc: '確認 App 電子票在開車前已 Check-in，刷 QR code 進站。搭乘 06:20 班次，車上享用早餐盒。', type: 'transport' , place: 'Roma Termini', address: 'Via Giovanni Giolitti, 40, 00185 Rome, RM, Italy' },
+              { id: 'd14-5', time: '06:20-06:52', title: '搭 Leonardo Express', desc: '中途不停，32 分鐘直達羅馬達文西機場。火車上享用早餐。', type: 'transport' , note: '（每 15 分鐘一班）目標車次：06:20 ; 備援車次：06:35'},
+              { id: 'd14-6', time: '06:52-07:00', title: '火車抵達 FCO 機場車站 ➔ 前往 T3 航廈', desc: '下火車後上樓，必須沿著長長的室內玻璃天橋步行約 10 分鐘，方可進入 T3 出境大廳。華航櫃檯通常位於 Row E 或 F。', type: 'transport', place: 'Leonardo da Vinci-Fiumicino Airport', address: 'Via dell\' Aeroporto di Fiumicino, 320, 00054 Fiumicino RM, Italy' },
+              { id: 'd14-7', time: '07:00-09:00', title: '退稅手續與辦理報到', desc: '先拖行李去海關蓋章櫃檯 (Customs / Dogana) 出示護照、退稅單、電子機票，蓋章。隨後到隔壁 Global Blue 或 Planet 櫃檯排隊領款。', type: 'shopping', note: '海關可能會抽查未託運行李中的退稅物品，請不要先辦行李託運！' },
+              { id: 'd14-8', time: '11:00', title: '飛機起飛：搭乘華航 CI076 返台', desc: '辦理完行李託運、出境安檢，在 T3 採購最後紀念品，順利登機。', type: 'flight' }
+            ]
+          },
+          {
+            day: 15,
+            date: '10月15日 星期四',
+            city: '台北',
+            title: '抵達台灣，圓滿結束極致難忘的義大利 15 日尊榮古典之旅',
+            summary: '返抵桃園國際機場。',
+            items: [
+              { id: 'd15-1', time: '05:40', title: '返抵桃園國際機場 第一航廈', desc: '提領行李，通關回溫馨的家。期待下一次航行！', type: 'flight' }
+            ]
+          }
+        ];
+        
+        const PACKING_LIST_DATA = [
+          { category: '核心證件與現金', item: '護照正本 (效期6個月以上)', checked: false },
+          { category: '核心證件與現金', item: '護照與身份證影本紙本留底', checked: false },
+          { category: '核心證件與現金', item: '實體列印高鐵票、門票、飯店確認單', checked: false },
+          { category: '核心證件與現金', item: '雙幣信用卡2張（含感應式刷卡與Apple Pay）', checked: false },
+          { category: '核心證件與現金', item: '實體列印高鐵票、門票、飯店確認單歐元小額硬幣與備用現鈔 (建議公廁/咖啡店備用)', checked: false },
+          { category: '隨身電子設備', item: '手機、充電器、備份SIM卡/海外eSIM QR', checked: false },
+          { category: '隨身電子設備', item: '義大利專用雙圓頭轉接插頭 2 個 (歐規 Type C/L)', checked: false },
+          { category: '隨身電子設備', item: '符合航安規範的行動電源 (容量需標示清晰)', checked: false },
+          { category: '隨身電子設備', item: '相機、足夠的備份記憶卡、快充頭', checked: false },
+          { category: '隨身電子設備', item: '傳輸線與輕便延長線/排插', checked: false },
+          { category: '護理、衣物與藥品', item: '輕便防風保暖夾克、耐磨好走的防滑步行鞋', checked: false },
+          { category: '核心證件與現金', item: '歐元小額硬幣與備用現鈔 (建議公廁/咖啡店備用)', checked: false },
+          { category: '隨身電子設備', item: '手機、充電器、備份SIM卡/海外eSIM QR', checked: false },
+          { category: '隨身電子設備', item: '義大利專用雙圓頭轉接插頭 2 個 (歐規 Type C/L)', checked: false },
+          { category: '隨身電子設備', item: '符合航安規範的行動電源 (容量需標示清晰)', checked: false },
+          { category: '隨身電子設備', item: '相機、足夠的備份記憶卡、快充頭', checked: false },
+          { category: '隨身電子設備', item: '傳輸線與輕便延長線/排插', checked: false },
+          { category: '護理、衣物與藥品', item: '輕便防風保暖夾克、耐磨好走的防滑步行鞋', checked: false },
+          { category: '護理、衣物與藥品', item: '個人常用藥物 (感冒藥、止痛藥、暈車藥)', checked: false },
+          { category: '護理、衣物與藥品', item: '舒緩肌肉酸痛貼布/休足時間 (登頂行程必備)', checked: false },
+          { category: '護理、衣物與藥品', item: '太陽眼鏡、遮陽帽、輕便折疊晴雨傘', checked: false },
+          { category: '護理、衣物與藥品', item: '隨身防扒包 / 掛脖手機繩', checked: false },
+        ];
+        
+        const PHRASEBOOK_DATA = [
+          { italian: "Ciao!", chinese: "你好！/ 再見！", pinyin: "ㄑㄧㄠ", usage: "見面打招呼與告別均通用，最萬用、最親切" },
+          { italian: "Grazie!", chinese: "謝謝！", pinyin: "葛拉吉耶", usage: "結帳、指路、服務完最常掛嘴邊的話，尾音輕柔" },
+          { italian: "Prego!", chinese: "不客氣 / 請", pinyin: "普雷勾", usage: "當別人對你說 Grazie 時的回覆，店員邀請你入座也會說" },
+          { italian: "Dov'è il bagno?", chinese: "洗手間在哪裡？", pinyin: "豆 V 艾  伊 班尤？", usage: "在咖啡店、餐館或路上借廁所的終極救命句！" },
+          { italian: "Il conto, per favore.", chinese: "請給我帳單 (結帳)", pinyin: "伊 恐投，胚爾 法沃瑞", usage: "在餐廳吃飽後結帳的優雅說法" },
+          { italian: "Quanto costa?", chinese: "多少錢？", pinyin: "寬透 扣斯打？", usage: "在市集、紀念品攤位詢價的開頭" },
+          { italian: "Un caffè, per favore.", chinese: "請給我一杯濃縮咖啡", pinyin: "溫 卡非，胚爾 法沃瑞", usage: "義大利早晨在吧台 (Banco) 點 Espresso 的靈魂點餐詞" },
+          { italian: "Posso pagare con carta?", chinese: "可以用信用卡付款嗎？", pinyin: "波索 巴嘎雷 恐 卡打？", usage: "結帳時詢問是否能感應刷卡或用行動支付" },
+          { italian: "Buongiorno!", chinese: "早安！/ 日安！", pinyin: "波恩九諾", usage: "白天的問候語，進店、進飯店與櫃檯打招呼顯得非常禮貌" },
+          { italian: "Buonasera!", chinese: "晚安！", pinyin: "波恩那塞拉", usage: "傍晚到夜間的問候語，去餐廳吃晚宴時的首選問候" },
+        ];
+        const { useState, useEffect, useRef } = React;
+
+        // 建立專屬 React 的 Lucide 圖標渲染組件，徹底解決 React 與 CDN 渲染衝突、不顯示的問題
+        function Lucide({ name, className = "w-4 h-4" }) {
+            const containerRef = useRef(null);
+
+            useEffect(() => {
+                if (containerRef.current && window.lucide) {
+                    // 清空之前的 SVG，避免重疊渲染
+                    containerRef.current.innerHTML = `<i data-lucide="${name}"></i>`;
+                    // 調用全球 UMD 實體方法，指定只渲染這個特定小組件
+                    window.lucide.createIcons({
+                        node: containerRef.current,
+                        attrs: {
+                            class: className
+                        }
+                    });
+                }
+            }, [name, className]);
+
+            return <span ref={containerRef} className="inline-flex items-center justify-center"></span>;
+        }
+
+        function App() {
+            const [activeTab, setActiveTab] = useState("itinerary");
+            const [selectedDay, setSelectedDay] = useState(2);
+            const [darkMode, setDarkMode] = useState(false);
+            
+            // 自訂座位號碼儲存
+            const [outboundSeat, setOutboundSeat] = useState(() => localStorage.getItem("outboundSeat") || "");
+            const [inboundSeat, setInboundSeat] = useState(() => localStorage.getItem("inboundSeat") || "");
+            const [milanVeniceSeat, setMilanVeniceSeat] = useState(() => localStorage.getItem("milanVeniceSeat") || "");
+            const [veniceFlorenceSeat, setVeniceFlorenceSeat] = useState(() => localStorage.getItem("veniceFlorenceSeat") || "");
+            const [florenceRomeSeat, setFlorenceRomeSeat] = useState(() => localStorage.getItem("florenceRomeSeat") || "");
+
+            // 打包清單儲存
+            const [checklist, setChecklist] = useState(() => {
+                const saved = localStorage.getItem("packingChecklist");
+                return saved ? JSON.parse(saved) : PACKING_LIST_DATA;
+            });
+            const [newChecklistItem, setNewChecklistItem] = useState("");
+            const [newChecklistCategory, setNewChecklistCategory] = useState("核心證件與現金");
+
+            // 語彙搜尋與閃卡 state
+            const [phraseSearch, setPhraseSearch] = useState("");
+            const [flashcardIndex, setFlashcardIndex] = useState(null);
+            const [showAnswer, setShowAnswer] = useState(false);
+
+            useEffect(() => {
+                localStorage.setItem("outboundSeat", outboundSeat);
+                localStorage.setItem("inboundSeat", inboundSeat);
+                localStorage.setItem("milanVeniceSeat", milanVeniceSeat);
+                localStorage.setItem("veniceFlorenceSeat", veniceFlorenceSeat);
+                localStorage.setItem("florenceRomeSeat", florenceRomeSeat);
+            }, [outboundSeat, inboundSeat, milanVeniceSeat, veniceFlorenceSeat, florenceRomeSeat]);
+
+            useEffect(() => {
+                localStorage.setItem("packingChecklist", JSON.stringify(checklist));
+            }, [checklist]);
+
+            // 自動語音朗讀義大利語
+            const speakItalian = (text) => {
+                if ("speechSynthesis" in window) {
+                    window.speechSynthesis.cancel();
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = "it-IT";
+                    utterance.rate = 0.85;
+                    window.speechSynthesis.speak(utterance);
+                }
+            };
+
+            // Italian Cities Translation Map for superior map queries
+            const translateCity = (cityStr) => {
+              if (!cityStr) return '';
+              if (cityStr.includes('米蘭')) return 'Milan';
+              if (cityStr.includes('威尼斯')) return 'Venice';
+              if (cityStr.includes('佛羅倫斯') || cityStr.includes('翡冷翠')) return 'Florence';
+              if (cityStr.includes('比薩')) return 'Pisa';
+              if (cityStr.includes('羅馬')) return 'Rome';
+              if (cityStr.includes('梵蒂岡')) return 'Vatican City';
+              if (cityStr.includes('桃園') || cityStr.includes('台北')) return 'Taiwan';
+              return cityStr.split(' ➔ ')[0].split(' ')[0];
+            };
+
+            // 100% Precise Google Maps URL Builder
+            const getGoogleMapsLink = (item, city) => {
+              // 1. Detect coordinates in descriptions/tips (e.g., Trevi, Spanish Steps, Accademia)
+              const coordsRegex = /(-?\d+\.\d+)\s*,\s*(-?\d+\.\d+)/;
+              const combinedText = (item.desc || '') + ' ' + (item.tips || '');
+              const match = combinedText.match(coordsRegex);
+              if (match) {
+                return `https://www.google.com/maps/search/?api=1&query=${match[1]},${match[2]}`;
+              }
+        
+              // 2. Build precision search query
+              const searchPlace = item.place || item.title;
+              const translatedCity = translateCity(city);
+              const isTaiwan = translatedCity === 'Taiwan' || (item.place && (item.place.includes('Taoyuan') || item.place.includes('桃園')));
+        
+              const queryParts = [
+                searchPlace,
+                item.address,
+                isTaiwan ? '' : translatedCity,
+                isTaiwan ? 'Taiwan' : 'Italy'
+              ].filter(Boolean);
+        
+              return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(queryParts.join(', '))}`;
+            };
+
+            const handleAddChecklistItem = (e) => {
+                e.preventDefault();
+                if (!newChecklistItem.trim()) return;
+                setChecklist([...checklist, {
+                    category: newChecklistCategory,
+                    item: newChecklistItem,
+                    checked: false
+                }]);
+                setNewChecklistItem("");
+            };
+
+            const toggleChecklist = (index) => {
+                const nextList = [...checklist];
+                nextList[index].checked = !nextList[index].checked;
+                setChecklist(nextList);
+            };
+
+            const deleteChecklistItem = (index) => {
+                setChecklist(checklist.filter((_, i) => i !== index));
+            };
+
+            const checkedCount = checklist.filter((item) => item.checked).length;
+            const checklistPercent = Math.round((checkedCount / checklist.length) * 100) || 0;
+            const selectedDayData = DAYS_DATA.find((d) => d.day === selectedDay) || DAYS_DATA[0];
+
+            // 實作打包離線 HTML
+            const handleOfflineDownload = () => {
+                const docString = document.documentElement.outerHTML;
+                const blob = new Blob([docString], { type: "text/html;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "義大利15日尊榮旅遊手冊_iPhone14Pro離線版.html";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            };
+
+            return (
+                <div class={darkMode ? "dark" : ""}>
+                    {/* 這個外層 Wrapper 負責：
+                      1. 在電腦上 (sm:breakpoint 以上) 以 iPhone 14 Pro (393x852) 的比例呈現框線
+                      2. 在手機上自動滿版 fullscreen，並啟用 iOS 安全區適配
+                    */}
+                    <div class="min-h-screen w-full flex items-center justify-center transition-colors duration-300 p-0 sm:p-6 bg-zinc-100 dark:bg-slate-950">
+                        <div class="w-full h-[100dvh] sm:h-[852px] sm:w-[393px] flex flex-col relative sm:rounded-[48px] sm:border-[8px] sm:border-zinc-800 dark:sm:border-slate-800 sm:shadow-2xl overflow-hidden transition-all duration-300 bg-white dark:bg-slate-900 border-zinc-200">
+                            
+                            {/* 頂部 Header - 動態避開 iPhone 14 Pro 動態島 */}
+                            <header class="px-4 pb-3.5 safe-top border-b sticky top-0 z-50 flex justify-between items-center transition-colors bg-gradient-to-r from-emerald-900 to-teal-950 text-white border-emerald-950 shadow-md">
+                                <div class="flex items-center gap-2 mt-2">
+                                    <div class="p-1.5 bg-amber-400 rounded-lg text-emerald-950 flex items-center justify-center">
+                                        <Lucide name="compass" className="w-5 h-5 text-emerald-950" />
+                                    </div>
+                                    <div>
+                                        <p class="text-[9px] tracking-widest uppercase font-bold text-amber-300">ITALIA LUXURY TRAVEL</p>
+                                        <h1 class="text-xs font-black tracking-tight">義大利 15 日尊榮旅遊手冊</h1>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-1.5 mt-2">
+                                    <button 
+                                        onClick={handleOfflineDownload} 
+                                        class="bg-amber-400 hover:bg-amber-500 text-emerald-950 font-extrabold px-2 py-1 rounded text-[9px] flex items-center gap-1 transition-all"
+                                        title="下載此網頁為離線版App，無網路也能百分百正常使用！"
+                                    >
+                                        <Lucide name="download" className="w-3 h-3 text-emerald-950" />
+                                        <span>離線版</span>
+                                    </button>
+                                    <button 
+                                        onClick={() => setDarkMode(!darkMode)}
+                                        class="p-1 rounded-full border transition-all border-emerald-800 bg-emerald-950/40 text-amber-200 flex items-center justify-center"
+                                    >
+                                        {darkMode ? <Lucide name="sun" className="w-3.5 h-3.5" /> : <Lucide name="moon" className="w-3.5 h-3.5" />}
+                                    </button>
+                                </div>
+                            </header>
+
+                            {/* 主要滑動內容區 */}
+                            <div class="flex-1 overflow-y-auto pb-28 px-4 pt-4 space-y-4 no-scrollbar">
+                                
+                                {activeTab === "itinerary" && (
+                                    <div class="space-y-4">
+                                        {/* 橫向滑動天數 */}
+                                        <div class="space-y-1.5">
+                                            <div class="flex justify-between items-center">
+                                                <span class="text-xs font-black uppercase tracking-wider text-amber-500 flex items-center gap-1">
+                                                    <Lucide name="calendar" className="w-3.5 h-3.5 text-amber-500" />
+                                                    <span>15 天行程橫向切換</span>
+                                                </span>
+                                                <span class="text-[9px] text-zinc-400 font-bold">左右滑動</span>
+                                            </div>
+                                            <div class="flex overflow-x-auto gap-2 py-1 no-scrollbar snap-x scroll-smooth">
+                                                {DAYS_DATA.map((d) => (
+                                                    <button
+                                                        key={d.day}
+                                                        onClick={() => setSelectedDay(d.day)}
+                                                        class={`snap-center flex-shrink-0 w-16 py-1.5 rounded-xl border flex flex-col items-center justify-center transition-all ${selectedDay === d.day ? "bg-gradient-to-br from-emerald-800 to-teal-950 text-white border-emerald-800 shadow-md scale-105 font-bold" : `${darkMode ? "bg-slate-800 border-slate-700 text-slate-300" : "bg-zinc-50 border-zinc-200 text-zinc-700 hover:bg-zinc-100"}`}`}
+                                                    >
+                                                        <span class="text-[10px] uppercase tracking-widest opacity-80">Day</span>
+                                                        <span class="text-sm font-black">{d.day}</span>
+                                                        <span class="text-[10px] truncate max-w-[55px] opacity-90">{d.city.split(" ")[0]}</span>
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        {/* 天數大卡片 */}
+                                        <div class="relative overflow-hidden rounded-2xl p-4 bg-gradient-to-br from-emerald-900 to-teal-950 text-white shadow-lg">
+                                            <div class="absolute -right-12 -top-12 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none"></div>
+                                            <div class="flex justify-between items-start gap-2">
+                                                <span class="bg-amber-400 text-emerald-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest">Day {selectedDayData.day}</span>
+                                                <span class="text-[10px] font-bold text-emerald-200">📍 {selectedDayData.city}</span>
+                                            </div>
+                                            <h2 class="text-base font-black mt-2 leading-snug">{selectedDayData.title}</h2>
+                                            <p class="text-[11px] text-emerald-100 mt-1.5 leading-relaxed font-medium opacity-90">{selectedDayData.summary}</p>
+                                            <div class="mt-3 pt-3 border-t border-white/10 flex justify-between items-center text-[10px] text-amber-300 font-bold">
+                                                <span>{selectedDayData.date}</span>
+                                                <span class="bg-emerald-800 px-2 py-0.5 rounded text-[9px] text-white">共 {selectedDayData.items.length} 節點</span>
+                                            </div>
+                                        </div>
+
+                                        {/* 當日行程節點清單 */}
+                                        <div class="space-y-3">
+                                            {selectedDayData.items.map((item) => (
+                                                <div key={item.id} class={`p-3.5 rounded-xl border transition-all ${darkMode ? "bg-slate-900 border-slate-800 text-white" : "bg-white border-zinc-200 text-zinc-900"}`}>
+                                                    <div class="flex justify-between items-start gap-2.5">
+                                                        <div class="space-y-1.5 flex-1">
+                                                            <div class="flex items-center gap-1.5">
+                                                                <span class="text-[12px] font-black text-amber-500 font-mono tracking-wider bg-amber-500/10 px-1.5 py-0.5 rounded">{item.time}</span>
+                                                                <span class={`text-[10px] px-1.5 py-0.5 rounded font-black uppercase ${
+                                                                    item.type === "sight" ? "bg-blue-500/10 text-blue-500" :
+                                                                    item.type === "food" ? "bg-orange-500/10 text-orange-500" :
+                                                                    item.type === "shopping" ? "bg-pink-500/10 text-pink-500" :
+                                                                    item.type === "transport" ? "bg-green-500/10 text-green-500" :
+                                                                    item.type === "flight" ? "bg-sky-500/10 text-sky-500" :
+                                                                    item.type === "hotel" ? "bg-purple-500/10 text-purple-500" : "bg-zinc-500/10 text-zinc-500"
+                                                                }`}>
+                                                                    {item.type === "sight" ? "🏛️ 景點" :
+                                                                     item.type === "food" ? "🍕 美食" :
+                                                                     item.type === "shopping" ? "🛍️ 購物" :
+                                                                     item.type === "transport" ? "🚄 交通" :
+                                                                     item.type === "flight" ? "✈️ 航班" :
+                                                                     item.type === "hotel" ? "🏨 住宿" : "📍 其他"}
+                                                                </span>
+                                                            </div>
+                                                            <h4 class="text-xs font-black leading-snug">{item.title}</h4>
+                                                            <p class={`text-[11px] leading-relaxed ${darkMode ? "text-slate-350" : "text-zinc-500"}`}>{item.desc}</p>
+                                                            
+                                                            {item.note && (
+                                                                <div class="mt-1.5 flex items-start gap-1 text-[11px] text-amber-600 dark:text-amber-400 font-bold bg-amber-500/5 p-1.5 rounded border border-amber-500/10">
+                                                                    <Lucide name="info" className="w-3 h-3 flex-shrink-0 mt-0.5 text-amber-650" />
+                                                                    <span><strong>提醒：</strong>{item.note}</span>
+                                                                </div>
+                                                            )}
+                                                            {item.tips && (
+                                                                <div class="mt-1.5 flex items-start gap-1 text-[11px] text-teal-600 dark:text-teal-400 font-bold bg-teal-500/5 p-1.5 rounded border border-teal-500/10">
+                                                                    <Lucide name="compass" className="w-3 h-3 flex-shrink-0 mt-0.5 text-teal-650" />
+                                                                    <span><strong>拍照秘訣：</strong>{item.tips}</span>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                        <a 
+                                                            href={getGoogleMapsLink(item, selectedDayData.city)}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            class="flex-shrink-0 p-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 transition-all flex items-center justify-center gap-0.5 text-[10px] font-extrabold"
+                                                        >
+                                                            <Lucide name="map-pin" className="w-3 h-3 text-emerald-700 dark:text-emerald-400" />
+                                                            <span>地圖</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {activeTab === "flights" && (
+                                    <div class="space-y-4">
+                                        <h2 class="text-xs font-black uppercase tracking-wider text-amber-500 flex items-center gap-1">
+                                            <Lucide name="plane" className="w-4 h-4 text-amber-500" />
+                                            <span>核心航班與座位清單</span>
+                                        </h2>
+                                        
+                                        {/* 去程航班卡片 */}
+                                        <div class={`rounded-xl shadow border overflow-hidden ${darkMode ? "bg-slate-900 border-slate-800 text-white" : "bg-white border-zinc-200 text-zinc-900"}`}>
+                                            <div class="bg-emerald-900 text-white p-3 flex justify-between items-center text-[11px] font-extrabold">
+                                                <span>✈️ 長榮航空 BR095 (去程)</span>
+                                                <span class="bg-amber-400 text-emerald-950 px-1.5 py-0.5 rounded text-[11px]">10/1 出發</span>
+                                            </div>
+                                            <div class="p-3 space-y-3">
+                                                <div class="flex justify-between items-center border-b border-dashed border-zinc-100 dark:border-slate-800 pb-2.5">
+                                                    <div>
+                                                        <p class="text-lg font-black font-mono">TPE</p>
+                                                        <p class="text-[11px] text-zinc-400">桃園 T2</p>
+                                                        <p class="text-[13px] font-black text-emerald-600 mt-0.5">23:15</p>
+                                                    </div>
+                                                    <div class="flex-1 flex flex-col items-center px-1">
+                                                        <span class="text-[11px] text-zinc-400">14H 5M</span>
+                                                        <div class="w-full h-px bg-zinc-200 dark:bg-slate-700 relative my-1">
+                                                            <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 rotate-90 text-amber-500">
+                                                                <Lucide name="plane" className="w-3 h-3 text-amber-500" />
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-[11px] text-zinc-450">B777-300ER</span>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <p class="text-lg font-black font-mono">MXP</p>
+                                                        <p class="text-[11px] text-zinc-400">米蘭 MXP T1</p>
+                                                        <p class="text-[13px] font-black text-emerald-600 mt-0.5">07:35 <span class="font-normal text-[11px]">+1天</span></p>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-[11px] font-black uppercase text-zinc-400 mb-1">您的去程座位號碼 (點擊可編輯填寫)</label>
+                                                    <input 
+                                                        type="text" 
+                                                        value={outboundSeat} 
+                                                        onChange={(e) => setOutboundSeat(e.target.value)}
+                                                        placeholder="例如: 22K (自動儲存)" 
+                                                        class={`w-full px-2.5 py-1.5 text-xs rounded border outline-none font-bold ${darkMode ? "bg-slate-800 border-slate-700 text-amber-400" : "bg-amber-50/50 border-amber-200 text-emerald-950"}`}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* 回程航班卡片 */}
+                                        <div class={`rounded-xl shadow border overflow-hidden ${darkMode ? "bg-slate-900 border-slate-800 text-white" : "bg-white border-zinc-200 text-zinc-900"}`}>
+                                            <div class="bg-emerald-900 text-white p-3 flex justify-between items-center text-[13px] font-extrabold">
+                                                <span>✈️ 中華航空 CI076 (回程)</span>
+                                                <span class="bg-amber-400 text-emerald-950 px-1.5 py-0.5 rounded text-[11px]">10/14 出發</span>
+                                            </div>
+                                            <div class="p-3 space-y-3">
+                                                <div class="flex justify-between items-center border-b border-dashed border-zinc-100 dark:border-slate-800 pb-2.5">
+                                                    <div>
+                                                        <p class="text-lg font-black font-mono">FCO</p>
+                                                        <p class="text-[11px] text-zinc-400">羅馬 FCO T3</p>
+                                                        <p class="text-[13px] font-black text-emerald-600 mt-0.5">11:00</p>
+                                                    </div>
+                                                    <div class="flex-1 flex flex-col items-center px-1">
+                                                        <span class="text-[11px] text-zinc-400">12H 40M</span>
+                                                        <div class="w-full h-px bg-zinc-200 dark:bg-slate-700 relative my-1">
+                                                            <div class="absolute -top-1.5 left-1/2 -translate-x-1/2 rotate-90 text-amber-500">
+                                                                <Lucide name="plane" className="w-3 h-3 text-amber-500" />
+                                                            </div>
+                                                        </div>
+                                                        <span class="text-[11px] text-zinc-450">A350-900</span>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <p class="text-lg font-black font-mono">TPE</p>
+                                                        <p class="text-[11px] text-zinc-400">桃園 T1</p>
+                                                        <p class="text-[13px] font-black text-emerald-600 mt-0.5">05:40 <span class="font-normal text-[8px]">+1天</span></p>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-[11px] font-black uppercase text-zinc-400 mb-1">您的回程座位號碼 (點擊可編輯填寫)</label>
+                                                    <input 
+                                                        type="text" 
+                                                        value={inboundSeat} 
+                                                        onChange={(e) => setInboundSeat(e.target.value)}
+                                                        placeholder="例如: 31D (自動儲存)" 
+                                                        class={`w-full px-2.5 py-1.5 text-xs rounded border outline-none font-bold ${darkMode ? "bg-slate-800 border-slate-700 text-amber-400" : "bg-amber-50/50 border-amber-200 text-emerald-950"}`}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* 義大利高鐵車票號碼配置 */}
+                                        <div class={`p-3.5 rounded-xl border ${darkMode ? "bg-slate-900 border-slate-800 text-white" : "bg-white border-zinc-200 text-zinc-900"}`}>
+                                            <h3 class="text-xs font-black uppercase text-amber-500 mb-2.5 tracking-wider flex items-center gap-1">
+                                                <Lucide name="compass" className="w-3.5 h-3.5 text-amber-500" />
+                                                <span>意境高鐵自訂車票位置</span>
+                                            </h3>
+                                            <div class="space-y-3">
+                                                <div class="p-2 rounded bg-zinc-50 dark:bg-slate-800/60 border border-zinc-100 dark:border-slate-850">
+                                                    <div class="flex justify-between items-center text-[13px] mb-1">
+                                                        <span class="font-extrabold">🚄 10/4 高鐵: 米蘭 ➔ 威尼斯</span>
+                                                        <span class="bg-red-650 text-white font-bold px-1 rounded text-[11px]">Frecciarossa</span>
+                                                    </div>
+                                                    <input 
+                                                        type="text" 
+                                                        value={milanVeniceSeat} 
+                                                        onChange={(e) => setMilanVeniceSeat(e.target.value)}
+                                                        placeholder="輸入車廂/座位 (例: Coach 3, Seat 14A)" 
+                                                        class={`w-full px-2 py-1 text-[13px] rounded border outline-none ${darkMode ? "bg-slate-900 border-slate-700 text-amber-400" : "bg-white border-zinc-200 text-zinc-900"}`}
+                                                    />
+                                                </div>
+                                                <div class="p-2 rounded bg-zinc-50 dark:bg-slate-800/60 border border-zinc-100 dark:border-slate-850">
+                                                    <div class="flex justify-between items-center text-[13px] mb-1">
+                                                        <span class="font-extrabold">🚄 10/6 高鐵: 威尼斯 ➔ 佛羅倫斯</span>
+                                                        <span class="bg-amber-500 text-emerald-950 font-bold px-1 rounded text-[11px]">Italo</span>
+                                                    </div>
+                                                    <input 
+                                                        type="text" 
+                                                        value={veniceFlorenceSeat} 
+                                                        onChange={(e) => setVeniceFlorenceSeat(e.target.value)}
+                                                        placeholder="輸入車廂/座位 (例: Coach 2, Seat 5B)" 
+                                                        class={`w-full px-2 py-1 text-[13px] rounded border outline-none ${darkMode ? "bg-slate-900 border-slate-700 text-amber-400" : "bg-white border-zinc-200 text-zinc-900"}`}
+                                                    />
+                                                </div>
+                                                <div class="p-2 rounded bg-zinc-50 dark:bg-slate-800/60 border border-zinc-100 dark:border-slate-850">
+                                                    <div class="flex justify-between items-center text-[13px] mb-1">
+                                                        <span class="font-extrabold">🚄 10/9 高鐵: 佛羅倫斯 ➔ 羅馬</span>
+                                                        <span class="bg-amber-500 text-emerald-950 font-bold px-1 rounded text-[11px]">Italo</span>
+                                                    </div>
+                                                    <input 
+                                                        type="text" 
+                                                        value={florenceRomeSeat} 
+                                                        onChange={(e) => setFlorenceRomeSeat(e.target.value)}
+                                                        placeholder="輸入車廂/座位 (例: Coach 4, Seat 12A)" 
+                                                        class={`w-full px-2 py-1 text-[13px] rounded border outline-none ${darkMode ? "bg-slate-900 border-slate-700 text-amber-400" : "bg-white border-zinc-200 text-zinc-900"}`}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {activeTab === "checklist" && (
+                                    <div class="space-y-4">
+                                        <div class="p-4 rounded-2xl bg-gradient-to-br from-emerald-900 to-teal-950 text-white shadow">
+                                            <h2 class="text-sm font-black flex items-center gap-1">
+                                                <Lucide name="check-square" className="w-4 h-4 text-white" />
+                                                <span>行李打包智能進度</span>
+                                            </h2>
+                                            <p class="text-[10px] text-emerald-200">即時清點行李項目，支援離線保存進度！</p>
+                                            <div class="mt-3 flex items-center gap-3">
+                                                <div class="flex-1 bg-teal-950/65 rounded-full h-2.5 overflow-hidden p-0.5 border border-teal-500/20">
+                                                    <div class="bg-amber-400 h-full rounded-full transition-all duration-300" style={{ width: `${checklistPercent}%` }}></div>
+                                                </div>
+                                                <span class="text-xs font-black font-mono text-amber-400">{checklistPercent}%</span>
+                                            </div>
+                                        </div>
+
+                                        <form onSubmit={handleAddChecklistItem} class={`p-2.5 rounded-xl border flex gap-1.5 ${darkMode ? "bg-slate-900 border-slate-800" : "bg-white border-zinc-200"}`}>
+                                            <input 
+                                                type="text" 
+                                                value={newChecklistItem} 
+                                                onChange={(e) => setNewChecklistItem(e.target.value)}
+                                                placeholder="自訂行李項目 (如: 頸枕)" 
+                                                class={`flex-1 px-2.5 py-1.5 text-xs rounded border outline-none ${darkMode ? "bg-slate-800 border-slate-700 text-white" : "bg-zinc-50 border-zinc-200 text-zinc-900"}`}
+                                            />
+                                            <select 
+                                                value={newChecklistCategory} 
+                                                onChange={(e) => setNewChecklistCategory(e.target.value)}
+                                                class={`px-1.5 text-[13px] rounded border outline-none ${darkMode ? "bg-slate-800 border-slate-700 text-white" : "bg-zinc-50 border-zinc-200 text-zinc-900"}`}
+                                            >
+                                                <option value="核心證件與現金">證件與現金</option>
+                                                <option value="隨身電子設備">隨身電子</option>
+                                                <option value="護理、衣物與藥品">護理與衣物</option>
+                                            </select>
+                                            <button type="submit" class="bg-emerald-900 hover:bg-emerald-850 text-white px-2.5 rounded text-xs font-bold flex items-center justify-center">
+                                                <Lucide name="plus" className="w-3.5 h-3.5 text-white" />
+                                            </button>
+                                        </form>
+
+                                        <div class="space-y-3.5">
+                                            {["核心證件與現金", "隨身電子設備", "護理、衣物與藥品"].map((cat) => (
+                                                <div key={cat} class={`p-3 rounded-xl border ${darkMode ? "bg-slate-900 border-slate-800 text-white" : "bg-white border-zinc-200 text-zinc-900"}`}>
+                                                    <h3 class="text-xs font-black text-amber-500 border-b border-zinc-50 dark:border-slate-850 pb-2 mb-2 flex justify-between items-center uppercase tracking-wider">
+                                                        <span>{cat === "核心證件與現金" ? "🔑 證件與現金" : cat === "隨身電子設備" ? "🔌 隨身電子" : "👕 護理與衣物"}</span>
+                                                        <span class="text-[11px] bg-zinc-100 dark:bg-slate-800 px-1.5 py-0.5 rounded-full text-zinc-500">
+                                                            {checklist.filter((i) => i.category === cat && i.checked).length} / {checklist.filter((i) => i.category === cat).length}
+                                                        </span>
+                                                    </h3>
+                                                    <div class="space-y-1">
+                                                        {checklist.filter((i) => i.category === cat).map((item) => {
+                                                            const globalIdx = checklist.findIndex((x) => x.item === item.item);
+                                                            return (
+                                                                <div key={item.item} class="flex items-center justify-between py-1 border-b border-zinc-50/20 last:border-0">
+                                                                    <label class="flex items-center gap-2 cursor-pointer text-xs select-none">
+                                                                        <input 
+                                                                            type="checkbox" 
+                                                                            checked={item.checked} 
+                                                                            onChange={() => toggleChecklist(globalIdx)}
+                                                                            class="rounded border-zinc-300 text-emerald-600 focus:ring-emerald-500 w-3.5 h-3.5"
+                                                                        />
+                                                                        <span class={item.checked ? "line-through text-zinc-400" : ""}>{item.item}</span>
+                                                                    </label>
+                                                                    <button onClick={() => deleteChecklistItem(globalIdx)} class="text-zinc-400 hover:text-red-500 p-1 flex items-center justify-center">
+                                                                        <Lucide name="trash-2" className="w-3.5 h-3.5 text-zinc-400 hover:text-red-550" />
+                                                                    </button>
+                                                                </div>
+                                                            );
+                                                        })}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {activeTab === "phrases" && (
+                                    <div class="space-y-4">
+                                        <div class="flex justify-between items-center">
+                                            <h2 class="text-xs font-black uppercase tracking-wider text-amber-500 flex items-center gap-1">
+                                                <Lucide name="languages" className="w-4 h-4 text-amber-500" />
+                                                <span>日常實用義大利語速查</span>
+                                            </h2>
+                                            <button 
+                                                onClick={() => { setFlashcardIndex(0); setShowAnswer(false); }}
+                                                class="bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-[12px] px-2 py-0.5 rounded flex items-center gap-0.5"
+                                            >
+                                                ⚡ 閃卡記憶模式
+                                            </button>
+                                        </div>
+
+                                        {/* 語彙閃卡模式 overlay 視窗 */}
+                                        {flashcardIndex !== null && (
+                                            <div class="p-4 rounded-xl border border-amber-500/20 bg-gradient-to-br from-emerald-950 to-teal-950 text-white text-center space-y-4 relative">
+                                                <button onClick={() => setFlashcardIndex(null)} class="absolute top-2 right-2 text-zinc-300 hover:text-white">✕</button>
+                                                <div class="text-[12px] text-amber-400 font-bold uppercase">義語記憶閃卡 ({flashcardIndex + 1}/{PHRASEBOOK_DATA.length})</div>
+                                                <div class="space-y-1">
+                                                    <div class="text-2xl font-black text-amber-300 tracking-wide">{PHRASEBOOK_DATA[flashcardIndex].italian}</div>
+                                                    <div class="text-xs text-zinc-300">發音：{PHRASEBOOK_DATA[flashcardIndex].pinyin}</div>
+                                                </div>
+                                                <button 
+                                                    onClick={() => speakItalian(PHRASEBOOK_DATA[flashcardIndex].italian)}
+                                                    class="mx-auto flex items-center gap-1 px-3 py-1 rounded bg-amber-400 text-emerald-950 text-[12px] font-black"
+                                                >
+                                                    <Lucide name="volume-2" className="w-3.5 h-3.5 text-emerald-950" /> 播音
+                                                </button>
+                                                <div class="pt-2.5 border-t border-white/10">
+                                                    {showAnswer ? (
+                                                        <div class="space-y-1">
+                                                            <div class="text-sm font-bold text-emerald-100">{PHRASEBOOK_DATA[flashcardIndex].chinese}</div>
+                                                            <div class="text-[12px] text-zinc-450">{PHRASEBOOK_DATA[flashcardIndex].usage}</div>
+                                                        </div>
+                                                    ) : (
+                                                        <button onClick={() => setShowAnswer(true)} class="bg-white/10 hover:bg-white/20 text-white text-[12px] px-3 py-1 rounded font-bold">顯示翻譯</button>
+                                                    )}
+                                                </div>
+                                                <div class="flex gap-2 pt-2">
+                                                    <button 
+                                                        disabled={flashcardIndex === 0} 
+                                                        onClick={() => { setFlashcardIndex(prev => prev - 1); setShowAnswer(false); }}
+                                                        class="flex-1 bg-zinc-800 disabled:opacity-40 py-1.5 rounded text-[12px] font-bold"
+                                                    >
+                                                        上一個
+                                                    </button>
+                                                    <button 
+                                                        onClick={() => {
+                                                            if (flashcardIndex === PHRASEBOOK_DATA.length - 1) {
+                                                                setFlashcardIndex(null);
+                                                            } else {
+                                                                setFlashcardIndex(prev => prev + 1);
+                                                                setShowAnswer(false);
+                                                            }
+                                                        }}
+                                                        class="flex-1 bg-amber-400 text-emerald-950 py-1.5 rounded text-[12px] font-black"
+                                                    >
+                                                        {flashcardIndex === PHRASEBOOK_DATA.length - 1 ? "完成" : "下一個"}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        <div class="space-y-2">
+                                            <input 
+                                                type="text" 
+                                                value={phraseSearch} 
+                                                onChange={(e) => setPhraseSearch(e.target.value)}
+                                                placeholder="搜尋義語、中文或場景..." 
+                                                class={`w-full px-3 py-2 text-xs rounded-lg border outline-none ${darkMode ? "bg-slate-800 border-slate-700 text-white" : "bg-white border-zinc-200 text-zinc-900"}`}
+                                            />
+                                            <div class="space-y-2.5 max-h-[460px] overflow-y-auto no-scrollbar">
+                                                {PHRASEBOOK_DATA.filter(p => 
+                                                    p.italian.toLowerCase().includes(phraseSearch.toLowerCase()) || 
+                                                    p.chinese.includes(phraseSearch) || 
+                                                    p.usage.includes(phraseSearch)
+                                                ).map((phrase) => (
+                                                    <div key={phrase.italian} class={`p-3 rounded-xl border flex justify-between items-center ${darkMode ? "bg-slate-900 border-slate-800 text-white" : "bg-white border-zinc-200 text-zinc-900"}`}>
+                                                        <div>
+                                                            <div class="flex items-center gap-1.5">
+                                                                <span class="text-sm font-black text-emerald-900 dark:text-amber-400">{phrase.italian}</span>
+                                                                <span class="text-[12px] text-zinc-400 font-bold">[{phrase.pinyin}]</span>
+                                                            </div>
+                                                            <p class="text-xs font-extrabold text-stone-850 dark:text-slate-100">{phrase.chinese}</p>
+                                                            <p class="text-[12px] text-zinc-500 italic mt-0.5">{phrase.usage}</p>
+                                                        </div>
+                                                        <button 
+                                                            onClick={() => speakItalian(phrase.italian)}
+                                                            class="p-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 dark:text-amber-400 rounded-full transition-all flex items-center justify-center"
+                                                        >
+                                                            <Lucide name="volume-2" className="w-4 h-4 text-emerald-800 dark:text-amber-400" />
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                            </div>
+
+                            {/* 底部導覽列 - 動態避開 iPhone 14 Pro 底部 Home 橫條 */}
+                            <nav class="absolute bottom-0 left-0 right-0 border-t flex justify-around pb-4 pt-2.5 safe-bottom z-50 bg-white/95 dark:bg-slate-950/95 border-zinc-150 dark:border-slate-850 text-zinc-800 dark:text-slate-100 backdrop-blur-md">
+                                <button 
+                                    onClick={() => setActiveTab("itinerary")}
+                                    class={`flex flex-col items-center gap-1 transition-all ${activeTab === "itinerary" ? "text-emerald-700 dark:text-amber-400 scale-105 font-bold" : "text-zinc-450"}`}
+                                >
+                                    <Lucide name="calendar" className="w-5 h-5" />
+                                    <span class="text-[11px] font-black">每日行程</span>
+                                </button>
+                                <button 
+                                    onClick={() => setActiveTab("flights")}
+                                    class={`flex flex-col items-center gap-1 transition-all ${activeTab === "flights" ? "text-emerald-700 dark:text-amber-400 scale-105 font-bold" : "text-zinc-450"}`}
+                                >
+                                    <Lucide name="plane" className="w-5 h-5" />
+                                    <span class="text-[11px] font-black">航班高鐵</span>
+                                </button>
+                                <button 
+                                    onClick={() => setActiveTab("checklist")}
+                                    class={`flex flex-col items-center gap-1 transition-all ${activeTab === "checklist" ? "text-emerald-700 dark:text-amber-400 scale-105 font-bold" : "text-zinc-450"}`}
+                                >
+                                    <div class="relative flex items-center justify-center">
+                                        <Lucide name="check-square" className="w-5 h-5" />
+                                        {checklistPercent > 0 && (
+                                            <span class="absolute -top-1.5 -right-2 bg-amber-400 text-emerald-950 text-[9px] font-black rounded-full px-1">{checklistPercent}%</span>
+                                        )}
+                                    </div>
+                                    <span class="text-[11px] font-black">行李打包</span>
+                                </button>
+                                <button 
+                                    onClick={() => setActiveTab("phrases")}
+                                    class={`flex flex-col items-center gap-1 transition-all ${activeTab === "phrases" ? "text-emerald-700 dark:text-amber-400 scale-105 font-bold" : "text-zinc-450"}`}
+                                >
+                                    <Lucide name="languages" className="w-5 h-5" />
+                                    <span class="text-[11px] font-black">隨身義語</span>
+                                </button>
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // 初始化掛載 React 元件
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
