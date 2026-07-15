@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>義大利 15 日旅遊手冊</title>
+    <!-- Tailwind CSS for UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1B3022',
+                            gold: '#C5A059',
+                            grey: '#8E8A82',
+                            light: '#F4F3EF',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .docx-preview {
+            font-family: "Microsoft JhengHei", "SimSun", sans-serif;
+            background-color: #ffffff;
+            color: #1B3022;
+        }
+        .page-break {
+            page-break-after: always;
+        }
+        /* 網頁端預覽輔助：模擬書頁翻開效果 */
+        .preview-page {
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            padding: 30px;
+            margin-bottom: 30px;
+            min-height: 550px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body class="bg-[#D9D7CE] min-h-screen flex flex-col justify-between">
+
+
+    <!-- 主預覽區 -->
+    <main class="flex-grow p-4 md:p-8 flex justify-center">
+        <div class="max-w-[1100px] w-full bg-white p-6 md:p-12 shadow-2xl rounded-lg">
+
+            <!-- WORD DOCUMENT CONTENT CONTAINER -->
+            <div id="docx-content" class="docx-preview">
+                
+                <!-- Word 橫向 B5 與邊距定義 (XML 樣式) -->
+                <style>
+                    @page {
+                        size: 250mm 176mm;
+                        margin: 15mm 20mm 15mm 25mm; /* 預留 25mm 左側裝訂邊 */
+                    }
+                    p, li, td {
+                        font-family: 'Microsoft JhengHei', 'Segoe UI', sans-serif;
+                        line-height: 1.5;
+                        font-size: 14px; /* 原 11px 放大 3px 至 14px */
+                    }
+                    h1, h2, h3 {
+                        font-family: 'Microsoft JhengHei', 'Segoe UI', sans-serif;
+                        color: #1B3022;
+                    }
+                </style>
+
+                <!-- ================= 封面頁 ================= -->
+                <div class="page-break preview-page" style="text-align: center; border: 3px double #1B3022;">
+                    <div></div>
+                    <div>
+                        <p style="font-size: 19px; letter-spacing: 8px; color: #8E8A82; margin: 0; text-transform: uppercase;">IL GRANDE VIAGGIO IN ITALIA</p>
+                        <h1 style="font-size: 43px; font-weight: 900; color: #C5A059; margin: 25px 0 10px 0; letter-spacing: 4px;">義大利 15 日尊榮旅行手冊</h1>
+                        <p style="font-size: 21px; color: #1B3022; letter-spacing: 3px;">經典深度旅行：米蘭 • 威尼斯 • 佛羅倫斯 • 比薩 • 羅馬</p>
+                        <p style="font-size: 15px; color: #8E8A82; margin-top: 20px;"></p>
+                    </div>
+                    <div style="border-top: 1px solid #8E8A82; padding-top: 20px; margin-top: 30px;">
+                        <table style="width: 100%; border-collapse: collapse; border: none;">
+                            <tr style="border: none;">
+                                <td style="width: 50%; text-align: left; font-size: 17px; color: #8E8A82; border: none;">
+                                    <strong>時間：</strong> 10月1日 — 10月15日<br>
+                                </td>
+                                <td style="width: 50%; text-align: right; font-size: 17px; color: #8E8A82; border: none;">
+                                    <strong>航班：</strong> 長榮 BR095 / 中華航空 CI0076
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ================= Page 2: 航班與交通接駁資訊 (新增頁面) ================= -->
+                <div class="page-break preview-page">
+                    <div>
+                        <h2 style="font-size: 23px; color: #1B3022; border-bottom: 2px solid #1B3022; padding-bottom: 8px; margin-top: 0;"><i class="fa-solid fa-plane-departure mr-2 text-brand-gold"></i> 義大利 15 日航班與交通接駁配置</h2>
+                        <p style="font-size: 14px; color: #8E8A82; margin-top: 3px; margin-bottom: 15px;">FLIGHT INFORMATION & TRANSIT CONFIGURATION</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 50%; padding: 12px; background-color: #F4F3EF; border: 4px solid #ffffff; vertical-align: top;">
+                                    <h3 style="font-size: 17px; color: #1B3022; margin: 0 0 6px 0;">✈️ 去程：長榮航空 BR095</h3>
+                                    <p style="font-size: 14px; color: #555555; margin: 0; line-height: 1.5;">
+                                        <strong>起飛：</strong>10月1日 23:15 ➔ 桃園國際機場 (TPE) T2<br>
+                                        <strong>抵達：</strong>10月2日 07:35 ➔ 米蘭馬爾彭薩機場 (MXP) T1<br>
+                                        <strong>航程時間：</strong>約 14 小時 5 分鐘<br>
+                                        <strong>機型艙等：</strong>Boeing 777-300ER<br>
+                                        <strong>行李配置：</strong>託運行李 2 件 (每件 23 kg) / 手提 1 件 (7 kg)
+                                    </p>
+                                </td>
+                                <td style="width: 50%; padding: 12px; background-color: #F4F3EF; border: 4px solid #ffffff; vertical-align: top;">
+                                    <h3 style="font-size: 17px; color: #1B3022; margin: 0 0 6px 0;">✈️ 回程：中華航空 CI076</h3>
+                                    <p style="font-size: 14px; color: #555555; margin: 0; line-height: 1.5;">
+                                        <strong>起飛：</strong>10月14日 11:00 ➔ 羅馬達文西機場 (FCO) T3<br>
+                                        <strong>抵達：</strong>10月15日 05:40 ➔ 桃園國際機場 (TPE) T1<br>
+                                        <strong>航程時間：</strong>約 12 小時 40 分鐘<br>
+                                        <strong>機型艙等：</strong>Airbus A350-900<br>
+                                        <strong>行李配置：</strong>託運行李 2 件 (每件 23 kg) / 手提 1 件 (7 kg)
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="padding: 12px; background-color: #F4F3EF; border: 4px solid #ffffff; vertical-align: top;">
+                                    <h3 style="font-size: 17px; color: #1B3022; margin: 0 0 6px 0;">🚉 義大利境內核心高鐵與轉乘接駁概要</h3>
+                                    <p style="font-size: 14px; color: #555555; margin: 0; line-height: 1.5;">
+                                        • <strong>10/2：</strong>MXP 機場 → 米蘭中央車站 Milano Centrale (Malpensa Express 每 15-30 分一班)<br>
+                                        • <strong>10/4：</strong>08:45 米蘭 Milano Centrale → 11:12 威尼斯 Venezia Santa Lucia (Frecciarossa 紅箭高鐵)<br>
+                                        • <strong>10/6：</strong>08:05 威尼斯 Venezia Santa Lucia ➔ 10:20 佛羅倫斯 Firenze Santa Maria Novella (Italo 高鐵)<br>
+                                        • <strong>10/9：</strong>10:03 佛羅倫斯 Firenze Santa Maria Novella  ➔ 11:40 羅馬 Roma Termini (Italo 高鐵)<br>
+                                        • <strong>10/14：</strong>06:20 羅馬 Roma Termini ➔ 06:52 FCO 機場 (Leonardo Express 每 15 分鐘一班)
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">FLIGHT INFO • PAGE 2</div>
+                </div>
+
+                <!-- ================= 義大利旅遊資訊 ================= -->
+                <div class="page-break preview-page">
+                    <div>
+                        <h2 style="font-size: 23px; color: #1B3022; border-bottom: 2px solid #1B3022; padding-bottom: 8px; margin-top: 0;">義大利行前必備資訊</h2>
+                        <p style="font-size: 14px; color: #8E8A82; margin-top: 3px; margin-bottom: 15px;">ESSENTIAL ITALY TRAVEL INFORMATION</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 50%; padding: 12px; background-color: #F4F3EF; border: 4px solid #ffffff; vertical-align: top;">
+                                    <h3 style="font-size: 17px; color: #1B3022; margin: 0 0 6px 0;">🍂 10月氣候與穿搭</h3>
+                                    <p style="font-size: 14px; color: #555555; margin: 0; line-height: 1.5;">氣溫約 12°C–22°C。米蘭與威尼斯清晨與傍晚偏涼，羅馬中午大晴天。建議洋蔥式穿法，隨身備防風夾克與折疊傘。</p>
+                                </td>
+                                <td style="width: 50%; padding: 12px; background-color: #F4F3EF; border: 4px solid #ffffff; vertical-align: top;">
+                                    <h3 style="font-size: 17px; color: #1B3022; margin: 0 0 6px 0;">💳 刷卡支付與小額硬幣</h3>
+                                    <p style="font-size: 14px; color: #555555; margin: 0; line-height: 1.5;">感應式刷卡（如 Apple Pay）極普及。但部分公廁、自動販賣機、小餐車<strong>僅收 €1、€2 硬幣</strong>，隨身預留少量零錢。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%; padding: 12px; background-color: #F4F3EF; border: 4px solid #ffffff; vertical-align: top;">
+                                    <h3 style="font-size: 17px; color: #1B3022; margin: 0 0 6px 0;">🔌 插座電壓規格</h3>
+                                    <p style="font-size: 14px; color: #555555; margin: 0; line-height: 1.5;">電壓為 230V，歐規雙圓頭插頭 (Type C / L)。請攜帶萬國插頭，並建議搭配多孔 USB 快充頭使用。</p>
+                                </td>
+                                <td style="width: 50%; padding: 12px; background-color: #F4F3EF; border: 4px solid #ffffff; vertical-align: top;">
+                                    <h3 style="font-size: 17px; color: #1B3022; margin: 0 0 6px 0;">⚠️ 行動防扒警示</h3>
+                                    <p style="font-size: 14px; color: #555555; margin: 0; line-height: 1.5;">火車站、地鐵站及許願池、大教堂等景點為小偷高危區。後背包一律前背，防範熱情遞花、綁幸運繩等騙局。</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">TRAVEL INFO • PAGE 3</div>
+                </div>
+
+                <!-- ================= 10/2 米蘭 ================= -->
+                <!-- 10/2 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月2日 星期五 (上午) • 米蘭抵達</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 2 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-plane"></i> 上午重點：MXP機場抵達、Malpensa Express 乘車與斯福爾扎城堡順光拍照</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">07:35</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>航班降落米蘭-馬爾彭薩機場 1航廈 (MXP)</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">🚻 出關手續排隊時間極長。出關後立刻上機場廁所，務必先上！</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">09:35 - 10:50</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>機場特快 ➔ 米蘭中央車站 ➔ NYX飯店寄物</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">搭 Malpensa Express 抵達車站。前往 NYX Hotel Milan 寄放行李（大廳廁所🚻可用）。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">11:45 - 12:45</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>斯福爾扎城堡 & 和平門散步</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">地鐵 Lanza 站出來。沿圓環往正門順光拍攝城堡宏偉側面，穿過中庭，利用古拱廊透視，最後穿越公園走向和平門。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點美圖插槽 (兩張並排表格) -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px; border: none;">
+                            <tr style="border: none;">
+                                <td style="width: 50%; padding: 4px; border: none; text-align: center; vertical-align: top;">
+                                    <img src="https://media.istockphoto.com/id/1495109698/photo/fountain-of-piazza-castello-milan.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Sforza+Castle'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">斯福爾扎城堡 (Castello Sforzesco)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; text-align: center; vertical-align: top;">
+                                    <img src="https://media.istockphoto.com/id/1698934780/photo/yellow-tram-in-milan.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Arco+della+Pace'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">和平門 (Arco della Pace)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">MILAN • PAGE 4</div>
+                </div>
+
+                <!-- 10/2 下午 (右頁) -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月2日 星期五 (下午) • 拱廊與購物</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 2 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-bag-shopping"></i> 下午重點：艾曼紐二世拱廊名店、公牛好運馬賽克、1928型復古路面電車體驗</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">13:10 - 14:00</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>午餐：miscusi | pasta fresca - Milano Cadorna</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">🚋 搭 1 號路面電車從 Arco della Pace 至 P.za Virgilio 下車過馬路即達，還能體驗經典電車！</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">15:10 - 18:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>艾曼紐二世拱廊逛街</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">Marchesi 1824 → Ferrari Flagship Store Milano  → Apple Store Piazza Liberty → La Rinascente Milano。好運儀式：找到中心「公牛馬賽克」，右腳跟踩公牛生殖器轉三圈。🚻 廁所：La Rinascente 百貨。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">20:15 - 21:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>晚餐：Osteria italiana 傳統米蘭燴飯</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">傳統米蘭番紅花燴飯 (Saffron Risotto)。回程搭乘 10號路面電車，會出現米蘭最經典的 "Ventotto"（1928型）老電車，木造內裝極富情懷。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/2221138471/photo/galleria-vittorio-emanuele-ii-milan.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Galleria+Milano'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">艾曼紐二世拱廊 (Galleria)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://cdn.archilovers.com/projects/3a2afc2e-6dbb-49a2-819f-2e1df038b11b.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Saffron+Risotto'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">Ferrari Flagship Store Milano</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">MILAN • PAGE 5</div>
+                </div>
+
+                <!-- ================= 10/3 米蘭 ================= -->
+                <!-- 10/3 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月3日 星期六 (上午) • 最後的晚餐</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 3 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-palette"></i> 上午重點：達文西壁畫《最後的晚餐》朝盛、陸伊尼三明治快速午餐</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">08:35 - 08:50</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>最後的晚餐取票與外觀拍攝</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">🎟 必須提前至少 30 分鐘到恩寵聖母院左側小建築領票，需攜帶護照與確認信。🚻 領票旁的遊客中心可先上洗手間。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">09:30 - 10:15</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>進入參觀《最後的晚餐》</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">氣密艙式分批參觀，每批營運嚴格限制 15 分鐘。隨後彈性參觀恩寵聖母院。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">10:30 - 11:10</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>Panzerotti Luini 或 Spontini 快速午餐</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">搭地鐵 M1 直達大教堂廣場，排隊購買排隊名店 Luini 經典油炸三明治。🚻 可至 La Rinascente 百貨上廁所。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://www.electrummagazine.com/wp-content/uploads/2024/07/The-Last-Supper-2048x1114.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Santa+Maria+Grazie'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">最後的晚餐</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/494084426/photo/milano-spirit.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Panzerotti+Luini'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">米蘭大教堂</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">MILAN • PAGE 6</div>
+                </div>
+
+                <!-- 10/3 下午 (右頁) -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月3日 星期六 (下午) • 大教堂登頂</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 3 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-crown"></i> 下午重點：米蘭大教堂考古洗禮池、彩繪玻璃光影、Fast Track 電梯黃金登頂</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">11:40 - 13:40</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>米蘭大教堂內部與地下考古區</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">13:45-14:30 彩繪玻璃光影最震撼，適合拍攝「人物＋彩色剪影」。地下考古遺址看四世紀洗禮堂地基。🚻 離開前考古區廁所必上！</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">13:50 - 15:40</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>米蘭大教堂博物館</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">參觀屋頂雕刻真跡、大教堂精細木模型與玻璃彩繪圖稿。🚻 博物館內有廁所，登頂前必上。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">16:00 - 18:00</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>大教堂 Fast Track 電梯快速登頂</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">⚡️ 電梯位於大教堂南側。<strong>黃金登頂攝影：</strong>17:10–17:40 為金色晚霞，陽光會將整座飛扶壁與歌德石柱染成金橘色，是拍照最美時刻。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1637405499/photo/flying-buttress-and-rows-of-pinnacle-sculptures-on-the-rooftop-aisle-of-milan-cathedral.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Duomo+Roof'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">米蘭大教堂登頂 (Duomo Terrace)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://hips.hearstapps.com/hmg-prod/images/sbuxpressrelease-004-1536551177.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Starbucks+Milan'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">星巴克臻選® 米蘭烘焙工坊</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">MILAN • PAGE 7</div>
+                </div>
+
+                <!-- ================= 10/4 威尼斯 ================= -->
+                <!-- 10/4 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月4日 星期日 (上午) • 奔向威尼斯</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 4 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-train"></i> 上午重點：紅箭高鐵跨海路段拍照、水上巴士 ACTV 購票體驗</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">08:15 - 11:12</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>搭 Frecciarossa 紅箭高鐵 ➔ 威尼斯 Santa Lucia 站</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">🚄 經過 Desenzano 站可遠眺加爾達湖；進入跨海長堤時，坐在左側能拍出火車行駛在海中央的經典鐵道感。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">11:25 - 12:45</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>Hotel Principe 寄放行李 ＆ 快速餐</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">飯店寄物，大堂🚻必上。隨後到 Pasticceria Dal Mas 享用極速可頌與 Espresso 咖啡做為快閃午餐。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">12:50 - 13:20</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>搭 ACTV 2號水上巴士 (Vaporetto Line 2)</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">購買48小時交通卡。登上 Ferrovia 碼頭往 Rialto / San Marco 方向的 2 號船。在船尾戶外座位欣賞大運河兩側拜占庭宮殿。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/626959800/photo/aerial-view-of-venice-at-sunset-italy.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Frecciarossa'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">憲法橋</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/911570904/photo/view-of-venices-grand-canal.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Venice+Grand+Canal'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">威尼斯大運河 (Grand Canal)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">VENICE • PAGE 8</div>
+                </div>
+
+                <!-- 10/4 下午 (右頁) -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月4日 星期日 (下午) • 聖馬可奇景</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 4 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-gopuram"></i> 下午重點：總督宮金碧大會廳、聖馬可鐘樓登頂、大運河藍調夕照、Pontini 運河晚餐</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">13:40 - 16:15</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>總督宮 (Doge's Palace) 探秘</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">預約 14:00 入場。大議會廳在 15:30 左右，落日斜射光線打入最美。🚻 離開總督宮前，務必使用館內廁所。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">16:15 - 16:50</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>聖馬可鐘樓 (Campanile) 登頂</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">⏰ 預約 16:30 登頂。：16:35 拍順光下波光粼粼的聖馬可大教堂金圓頂；16:40 拍大運河及安康聖母殿；16:50 拍下聖喬治島波光細節。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">17:20 - 21:00</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>飯店房間夕陽 ＆ Trattoria Bar Pontini 晚餐</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">從 San Marco Giardinetti 搭 Line 2 坐左側靠窗。18:00 金色高光；18:30 大運河進入高彩藍調。晚餐在 Bar Pontini 享用海鮮麵，夜賞運河水波夜色。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1643911373/photo/palazzo-ducale-or-doges-palace-and-basilica-san-marco-in-venice-italy.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Doges+Palace'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">總督宮 (Doge's Palace)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/507794908/photo/cityscape-venice-italy.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Venice+Campanile'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">聖馬可鐘樓鳥瞰 (Campanile View)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">VENICE • PAGE 9</div>
+                </div>
+
+                <!-- ================= 10/5 威尼斯 ================= -->
+                <!-- 10/5 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月5日 星期一 (上午) • 聖馬可金箔</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 5 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-mosque"></i> 上午重點：里奧多清晨魚市場、沈船書店拍照、聖馬可大教堂金箔馬賽克點燈</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">08:15 - 10:00</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>里奧多市場 (Mercato di Rialto) 與里阿爾托橋</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">退房並至鄰近的 NH Venezia 飯店寄放行李(🚻必上)。搭船 Rialto 站下。清晨漫步威尼斯本島魚市。🚻 Rialto 市場旁公廁上午乾淨可上。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">10:10 - 10:40</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>沈船書店 (Libreria Acqua Alta)</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">穿梭古老水巷，GPS 易飄移建議提前對照地圖。拍攝經典浴缸藏書與舊書堆疊防火梯大景。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">11:00 - 12:45</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>聖馬可大教堂 (Basilica di San Marco) 點燈參觀</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">預約 11:00 入場。💡 <strong>11:30 金箔馬賽克燈光開啟</strong>，在黃金祭壇 (Pala d'Oro) 感受馬賽克被瞬間點亮的震撼。隨後上樓至博物館平視金色穹頂、去戶外陽台拍青銅馬與廣場大景。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/2247843558/photo/gondolas-passing-under-illuminated-rialto-bridge-in-venice-italy.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Rialto+Bridge'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">里阿爾托橋 (Ponte di Rialto)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1727679546859-df2e03c23f8f?auto=format&fit=crop&w=400&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Libreria+Acqua+Alta'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">聖馬可大教堂 (Basilica di San Marco)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">VENICE • PAGE 10</div>
+                </div>
+
+                <!-- 10/5 下午 (右頁) -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月5日 星期一 (下午) • 學院橋夕陽</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 5 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-ship"></i> 下午重點：平民貢多拉 Traghetto、安康聖母殿側光、學院橋最美明信片角度、嘆息橋藍調</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">13:00 - 14:40</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>弗洛里安咖啡館 (Caffè Florian) 午餐</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">在聖馬可廣場露天座位伴隨優雅樂隊演奏享用午餐。🚻 離開咖啡廳前，務必使用其內部洗手間。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">14:50 - 15:00</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>搭乘平民版貢多拉 Traghetto 橫跨大運河</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">乘車點：百合聖母渡口。僅需 2 歐元硬幣現金。航程約 3 分鐘。⚠️ 若遇停航改走學院橋。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">17:25 - 19:00</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>學院橋 (Ponte dell'Accademia) 拍大運河夕陽</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">📸 <strong>明信片大景：</strong>提前抵達橋上卡位。面向安康聖母殿方向。斜射會將大教堂穹頂鍍上金橘色。隨後搭 Line 1 到 Zaccaria，夜拍麥桿橋下神祕藍調的嘆息橋 (Ponte dei Sospiri)。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1566984991763-91b985a3f9c2?auto=format&fit=crop&w=400&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Venice+Gondola'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">穿梭巷弄間的貢多拉 (Gondola)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/2200009655/photo/sunrise-view-of-grand-canal-traffic-and-basilica-di-santa-maria-della-salute-venice-italy.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Accademia+Bridge'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">學院橋遠眺夕照安康聖母殿</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">VENICE • PAGE 11</div>
+                </div>
+
+                <!-- ================= 10/6 佛羅倫斯 ================= -->
+                <!-- 10/6 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月6日 星期二 (上午) • 前往翡冷翠</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 6 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-train"></i> 上午重點：Italo高鐵前進托斯卡尼、聖十字殿外觀、百年乾酪熟肉拼盤</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">07:00 - 10:20</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>NH 飯店退房 ➔ 搭 Italo 高鐵 ➔ 佛羅倫斯 SMN 站</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">退房，大堂先上廁所。搭 08:05 列車。高鐵窗外看點：進入托斯卡尼平野時，右側可捕捉起伏丘陵與紅磚頂農舍大景。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">10:35 - 12:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>Strozzi Palace Hotel 寄行李 ＆ 托斯卡尼拼盤午餐</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">飯店寄物(大廳有🚻)。隨後前往 I' Girone De' Ghiotti 享用鋪滿松露醬與托斯卡尼生火腿的經典三明治拼盤午餐。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">12:40 - 13:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>聖十字聖殿與佛羅倫斯老街散步</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">漫步至聖十字聖殿拍攝宏偉的大理石哥德式立面外觀，隨後向烏菲茲美術館方向散步移動。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1222429282/photo/famous-basilica-di-santa-croce-in-florence-italy.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Tuscany'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">聖十字聖殿</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1455076848/photo/famous-uffizi-gallery-in-florence-italy.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Cold+Cuts'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">烏菲茲美術館</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">FLORENCE • PAGE 12</div>
+                </div>
+
+                <!-- 10/6 下午 (right) -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月6日 星期二 (下午) • 烏菲茲美學</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 6 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-palette"></i> 下午重點：烏菲茲波提切利展廳、老橋全景暮光、傳統托斯卡尼大餐、野豬噴泉</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">14:00 - 18:00</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>烏菲茲美術館 (Uffizi) 預約參觀</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">預約 14:00。🎨 14:00直奔最底（卡拉瓦喬展廳）-> 達文西、米開朗基羅區 -> 15:50 露台咖啡廳休息拍舊宮 -> 16:15 看波提切利《維納斯的誕生》。🚻 洗手間必上！</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">18:10 - 19:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>老橋夕陽 ＆ 聖三一橋老橋全景攝影</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">漫步至老橋。吃 La Carraia 的開心果冰淇淋。隨後前往聖三一橋，向東拍攝「維奇歐老橋夕照與河面粉紅倒影」。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">20:00 - 22:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>Trattoria Marione 晚餐 ＆ 舊宮野豬噴泉</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">享用傳統的燉牛肚。餐後漫步夜拍領主廣場傭兵涼廊、野豬噴泉摸豬鼻子許願。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://cdn.britannica.com/16/235716-050-484FDE7F/The-birth-of-venus-botticelli.jpg?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Uffizi+Gallery'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">波提切利《維納斯的誕生》</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://plus.unsplash.com/premium_photo-1661963301289-399b472b8e85?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Ponte+Vecchio'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">維奇歐老橋 (Ponte Vecchio) 暮色</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">FLORENCE • PAGE 13</div>
+                </div>
+
+                <!-- ================= 10/7 佛羅倫斯 ================= -->
+                <!-- 10/7 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月7日 星期三 (上午) • 穹頂審判</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 7 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-up-long"></i> 上午重點：百花大教堂圓頂《末日審判》壁畫、洗禮堂天頂、Santa Reparata 地底遺址通道技巧</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">08:15 - 09:15</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>百花聖母大教堂 (Cupola) 登頂</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">持 Brunelleschi Pass。攀登至圓頂中段平台的環形看台，這裡是最近距離拍攝巨幅《末日審判》濕壁畫的位置，之後登頂俯拍全城紅屋頂。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">09:20 - 10:00</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>聖若翰洗者洗禮堂</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">參觀大教堂正對面的八角形洗禮堂，抬頭看耀眼無比的金箔拜占庭天頂畫。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">10:00 - 11:00</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>大教堂隱藏通道：Santa Reparata 地底遺址</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">⚡️ <strong>免排隊神技巧：</strong>直接前往大教堂內部的右側側廊之地底遺址入口。從這裡進去只需掃 Pass，不用跟外面廣場排隊，看完了地底直接進入教堂內部。🚻 地底設有洗手間。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/2190641956/photo/last-judgment-fresco-inside-the-dome-of-santa-maria-del-fiore-cathedral-in-florence-italy.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Florence+Duomo'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">瓦薩里《末日審判》</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1488903546/photo/the-florence-baptistery-in-italy-the-baptistery-of-saint-john-is-one-of-the-oldest-buildings.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Gates+of+Paradise'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">洗禮堂 天堂之門 (Porta del Paradiso)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">FLORENCE • PAGE 14</div>
+                </div>
+
+                <!-- 10/7 下午 (right) -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月7日 星期三 (下午) • 翡冷翠暮色</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 7 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-camera-retro"></i> 下午重點：天堂之門真跡、Za Za松露牛排、米開朗基羅廣場史詩落日、All'Antico三明治</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">11:30 - 13:00</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>午餐：Trattoria Za Za 松露饗宴</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">品嚐黑松露義大利麵與松露牛排。🚻 餐廳內洗手間上好再出發。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">13:10 - 15:40</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>主教座堂博物館 (Opera del Duomo) 參觀</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">看吉貝爾蒂《天堂之門》真跡、米開朗基羅《聖殤》。🚻 離開前大堂洗手間必上。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">17:30 - 19:20</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>米開朗基羅廣場 (Piazzale Michelangelo) 夕陽</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">🚖 用 appTaxi 叫車上山。日落前後半小時，站在廣場平台上，拍攝夕陽染紅整座老橋與百花大圓頂。晚餐外帶 All’Antico Vinaio 帕尼尼。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1457800739/photo/fiorentina-steak.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Steak'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">經典佛羅倫斯丁骨牛排 (Bistecca)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/2236530798/photo/aerial-view-of-florence-italy-at-sunset.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Florence+Sunset'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">米開朗基羅廣場遠眺黃昏藍調</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">FLORENCE • PAGE 15</div>
+                </div>
+
+                <!-- ================= 10/8 比薩與大衛 ================= -->
+                <!-- 10/8 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月8日 星期四 (上午) • 比薩斜塔</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 8 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-triangle-exclamation"></i> 上午重點：區間車月台地標攻略、Pisa S. Rossore小站捷徑、奇蹟廣場斜塔借位拍照</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">07:00 - 09:13</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>Strozzi 領早餐盒 ➔ 搭區間車前往比薩</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">⚠️ 往比薩的區間車常分派在 18 或 19 月台，這兩月台需往內走 7 分鐘，務必提早！搭乘 07:53 - 09:13 RV 直達 Pisa S. Rossore 站。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">09:13 - 10:40</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>比薩斜塔趣味拍照與遊覽</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">從 Rossore 站步行 8 分鐘即達斜塔。📸 <strong>拍照位：</strong>廣場草地右側大路（拍推/背/抱斜塔借位）、大教堂廊柱、外圍。🚻 廣場旁有收費公廁。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">10:43 - 12:08</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>搭區間車返回佛羅倫斯 SMN 車站</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">上車前必須在 Trenitalia App 上點選 Check-in 或在月台黃色小機器打票！</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1713332003/photo/horse-carriage-in-pisa.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Pisa+Cathedral'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">比薩奇蹟廣場 (Piazza dei Miracoli)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1460857792/photo/pisa-leaning-tower-torre-di-pisa-and-the-cathedral-duomo-di-pisa-at-sunset-pisa.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Leaning+Tower'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">比薩斜塔 (Leaning Tower)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">PISA • PAGE 16</div>
+                </div>
+
+                <!-- 10/8 下午 (右頁) -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月8日 星期四 (下午) • 大衛真跡</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 8 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-palette"></i> 下午重點：Da Nerbone 牛肚包、大衛像血管細節、喬托鐘樓夕照登頂、SMN修道院藥妝</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; top: none; border-right: none;">12:20 - 13:30</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>中央市場 Da Nerbone 牛肚包午餐</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">攤位 292。點餐口訣：說「Bagnato」（麵包沾滿肉汁），加紅綠雙醬（辣＋香）。🚻 二樓設有收費洗手間。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">13:40 - 15:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>學院美術館 (Accademia) 觀大衛像</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">預約 14:00。一進去直奔大衛像真跡，繞至後方看血管及雕琢紋理，隨後看未完工奴隸像。🚻 出口右側廁所必上。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">16:30 - 22:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>喬托鐘樓 (Campanile) 登頂與百年藥妝散步</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">🧗‍♀️ 預約 16:30。此時溫暖夕陽會將對面的巨大百花大教堂圓頂染成通透金黃色，為最美攝影時間。隨後參觀 SMN 百年修道院藥妝、Venchi流水巧克力。晚餐在 Dall'Oste 享用奢華丁骨牛排。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1692025686292-0d874d9bbd29?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=David+Statue'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">米開朗基羅 大衛像 (David)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/952626114/photo/view-of-florence-skyline-from-top-view.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Duomo+View'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">登頂喬托鐘樓眺望大教堂</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">FLORENCE • PAGE 17</div>
+                </div>
+
+                <!-- ================= 10/9 羅馬初見 ================= -->
+                <!-- 10/9 上午 (left) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月9日 星期五 (上午) • 羅馬出發</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 9 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-train"></i> 上午重點：清晨翡冷翠最後晨拍、Italo高鐵前進羅馬、iQ Hotel 避開暗巷的搬行李安全路線</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">06:00 - 08:30</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>大教堂清晨晨拍 ➔ 回飯店早餐退房</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">晨拍無人百花大教堂。Forno Ghibellina 買新鮮牛角包。回飯店吃早餐、辦理退房、大堂廁所🚻必上。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">09:40 - 11:40</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>搭 Italo 高鐵 10:03 - 11:40 ➔ 羅馬 Termini 車站</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">提前 15 分鐘看 Departures 螢幕。列車抵達終點 Termini，保持警覺防範扒手。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">12:00 - 12:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>iQ Hotel Roma 飯店行李寄放</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">🚨 <strong>避扒拉行李路線：</strong>出站時保持在地面層 (不要下地鐵)，走 Via Giolitti 側出口到外面大馬路，走外圍轉 Via Firenze 直達飯店，安全避開暗巷！大廳有廁所。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1651536146537-a52d68e337bc?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Termini'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">領主廣場(Piazza della Signoria)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1598615639852-b2b16d8d1db6?auto=format&fit=crop&w=400&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Pizza'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">傭兵涼廊(Loggia dei Lanzi)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">ROME • PAGE 18</div>
+                </div>
+
+                <!-- 10/9 下午 (right) -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月9日 星期五 (下午) • 破船晚霞</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 9 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-umbrella-beach"></i> 下午重點：超市大採買、西班牙廣場破船噴泉夕陽俯拍位、Pompi 提拉米蘇、安全夜返路線</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">12:40 - 16:10</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>超市採購與飯店正式入住</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">逛平價服飾店 Alcott，並在 Tigre、Pam Local 超市採購果汁、瓶裝水、零食。15:20 回飯店登記入住置物，上洗手間🚻。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">16:30 - 18:00</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>晚餐：That's Amore Restaurant</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">人氣網紅店。推薦炭烤牛小排、海鮮義大利麵、烤布蕾。🚻 餐廳內有廁所。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">18:10 - 21:50</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>西班牙廣場晚霞 ＆ Rinascente 百貨購物</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">📸 <strong>最美俯拍位：</strong>41.9061, 12.4832 (聖三一教堂前平台)。18:50–19:15 藍調時間。吃 Pompi 提拉米蘇、逛 La Rinascente（🚻百貨頂樓可上廁所）。夜間安全步行回程：沿大馬路 Via del Tritone 走到巴貝里尼廣場再轉 Via Firenze 回飯店，燈火通明最安全。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1636804907035-8ae6360f1d4f?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Spanish+Steps'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">西班牙階梯 (Scalinata di Trinità)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1539586345401-51d5bfba7ac0?auto=format&fit=crop&w=400&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Tiramisu'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">海鮮義大利麵 (Linguine allo Scoglio)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">ROME • PAGE 19</div>
+                </div>
+
+                <!-- ================= 10/10 羅馬古城 ================= -->
+                <!-- 10/10 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月10日 星期六 (上午) • 萬神聖光</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 10 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-gopuram"></i> 上午重點：聖依納爵假圓頂錯視畫、金杯咖啡冰沙、萬神殿正午聖光最美攝影</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">08:30 - 09:50</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>聖依納爵堂錯視畫 ＆ 金杯咖啡</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">聖依納爵堂：站殿中心大理石圓形標誌仰拍假圓頂錯視畫。隨後步行至金杯咖啡站立喝招牌 Granita 咖啡冰沙。🚻 內有廁所。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">10:00 - 11:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>聖王路易堂 ＆ 納沃納廣場散步</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">免費進聖王路易堂觀賞卡拉瓦喬作品。隨後逛納沃納廣場拍貝尼尼四河噴泉、吃 Giolitti 冰淇淋。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">11:35 - 13:00</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>萬神殿 (Pantheon) 預約參觀與聖光攝影</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">⏰ 預約 12:00。📸 <strong>聖光拍攝點：</strong>41.89861, 12.47687 (正大殿中心)。正午時分落入穹頂眼窗的直射陽光最神聖。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/642483796/photo/navona-square-rome-italy.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=St.Ignazio'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">納沃納廣場 (Piazza Navona)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1632660360844-78f86afcf39a?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Pantheon'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">萬神殿神聖眼窗 (Pantheon Oculus)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">ROME • PAGE 20</div>
+                </div>
+
+                <!-- ================= 10/10 下午 (right) ================= -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月10日 星期六 (下午) • 聖天使藍調</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 10 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-camera-retro"></i> 下午重點：銀塔貓咪之家、La Romana 開心果冰淇淋、聖天使橋台伯河絕美藍調、許願池璀璨夜拍位</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">13:10 - 15:20</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>Enoteca Corsi 午餐 ＆ 銀塔廣場貓咪中心</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">午餐，衛生間🚻必上。隨後漫步看銀塔廣場（凱撒遇刺處及古貓咪庇庇護所），吃 La Romana 冰淇淋（招牌 Crema dal 1947）。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">18:00 - 19:20</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>聖天使橋 (Ponte Sant'Angelo) 藍調倒影</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">📸 <strong>最佳攝影位：</strong>41.90306, 12.46630 (聖天使橋中央偏城堡 1/3 處)。18:00 黃金斜照、18:27 日落、18:45–19:05 聖天使堡點燈之最美藍色時刻。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">19:30 - 21:10</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>納沃納廣場與特雷維許願池夜拍</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">夜拍點燈古羅馬廣場。20:40 到特雷維許願池。📸 <strong>許願池夜間站位：</strong>41.90095, 12.48328 (右側石柱區)，拍海神石雕璀璨倒影。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/642320510/photo/rome-italy-castle-sant-angelo.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Castel+Sant+Angelo'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">聖天使堡 (Castel Sant'Angelo)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1040950060/photo/famous-trevi-fountain-rome-italy.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Trevi+Fountain'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">特雷維許願池 (Fontana di Trevi)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">ROME • PAGE 21</div>
+                </div>
+
+                <!-- ================= 10/11 羅馬競技場 ================= -->
+                <!-- 10/11 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月11日 星期日 (上午) • 競技場</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 11 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-landmark"></i> 上午重點：週日地鐵維護備案、競技場地下深探、Via Nicola Salvi 平台的 3 個高位絕密拍照點</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">08:20 - 09:30</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>週日交通與安全預排防護</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">🚨 <strong>地鐵警告：</strong>週日地鐵 B 線時常維修，若當天不順，直接在飯店叫 Uber 前往競技場（車資€10-15）。安檢前先拍凱旋門大景。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">09:30 - 11:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>羅馬競技場 (Colosseo) 深度預約入場</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">⏰ 預約 09:45。包含競技場地下層、第一層、第二層，仰望巨大古同心拱形走廊。🚻 競技場內部洗手間極推薦，離開前必上！</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">11:30 - 12:15</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>競技場高位攝影（Via Nicola Salvi 平台）</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">📸 <strong>高位平台 3 祕密拍照點：</strong>座標 41.89085, 12.49230。1. 蒙特奧皮奧花園（公園高處、平視無遮擋）、2. 綠蔭樹下（往右走50米、綠色枝葉作為自然畫框）、3. 人行小橋（極有縱深感）。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://plus.unsplash.com/premium_photo-1661963952208-2db3512ef3de??auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Colosseum'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">羅馬競技場 (Colosseum) </p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1626220611368-ad0a6bbd04ce?auto=format&fit=crop&w=400&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Colosseum+Interior'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">競技場內部遺址結構</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">ROME • PAGE 22</div>
+                </div>
+
+                <!-- 10/11 下午 (右頁) -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月11日 星期日 (下午) • 帝國全景</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 11 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-arrow-up-from-bracket"></i> 下午重點：古羅馬廣場遺址俯瞰、維托里亞諾360度玻璃電梯露台夕陽、帝國大道夜拍、飯店桑拿預約</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">12:30 - 14:00</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>午餐 Trattoria Luzzi ➔ 帕拉丁山登頂</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">享用傳統蛋醬麵與披薩。衛生間🚻在餐廳內上。隨後從大競技場旁 Via di San Gregorio 入口進入帕拉丁山，在空中露台俯瞰古羅馬廣場遺跡全貌。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">16:00 - 18:50</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>維托里亞諾 360 度四輪馬車露台夕陽</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">中層咖啡廳🚻。隨後購票搭乘透明玻璃電梯登上頂層四輪馬車露台 (Terrazza delle Quadrighe)。17:20 開始夕陽，360 度俯拍古羅馬廣場與梵蒂岡大穹頂點燈大景。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">18:50 - 22:00</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>帝國廣場大道夜拍 ➔ 飯店預約私人桑拿</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">📸 <strong>夜拍站位：</strong>41.89267, 12.48688 (帝國大道中段)。外帶 Alle Carrette 薄底披薩。21:00 預約使用飯店 private sauna 私人桑拿，放鬆雙腿。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1612271598100-5443d0095025?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Roman+Forum'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">古羅馬廣場遺址 (Roman Forum)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1497701650/photo/altar-of-the-fatherland.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Vittoriano'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">維托里亞諾</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">ROME • PAGE 23</div>
+                </div>
+
+                <!-- ================= 10/12 梵蒂岡 ================= -->
+                <!-- 10/12 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月12日 星期一 (上午) • 聖彼得大堂</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 12 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-cross"></i> 上午重點：極效避排隊安檢與洗手間攻略、大教堂圓頂鑰匙廣場、中央通道「神聖光束」</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">06:30 - 08:00</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>飯店外帶餐盒 ➔ 聖彼得廣場清晨排隊</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">🚨 06:30領餐盒出門。<strong>安檢前洗手間：</strong>面向大教堂右手邊，聖彼得廣場右側柱廊內側往裡走有公廁，先上！邊排隊邊吃餐盒。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">08:20 - 09:20</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>大教堂圓頂 (Dome with lift) 登頂</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">安檢完立刻衝右側「Cupola」入口搭電梯。先在圓頂內環看台俯拍貝尼尼聖體傘。隨後登頂頂部平台，拍下鑰匙形狀聖彼得廣場全景。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">09:30 - 11:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>大教堂內部參觀 ＆ 捕捉神聖光束</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">📸 <strong>神聖光路攝影點：</strong>41.90217, 12.45394（中央走道，背對祭壇）。早上 09:30 至 11:00 之間，陽光自高窗穿入，空氣中的微塵會把光束渲染得無比立體與神聖。隨後參觀米開朗基羅《聖殤》與聖體傘。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1735064772135-cc62b8d02380?auto=format&fit=crop&w=400&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=St.Peter+Square'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">鳥瞰聖彼得廣場 (St. Peter's Square)</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://www.opulentroutes.com/wp-content/uploads/2020/11/vatican-attractions-st-peters-basilica.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Basilica+Interior'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">大教堂殿堂內部 (Basilica Interior)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">VATICAN • PAGE 24</div>
+                </div>
+
+                <!-- ================= 10/12 下午 (右頁) ================= -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月12日 星期一 (下午) • 梵蒂岡國寶</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 12 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-palette"></i> 下午重點：華航回台網路預辦選位、梵蒂岡博物館雅典學院畫室、莫莫旋轉雙梯幾何大作</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">11:30 - 13:00</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>Pastasciutta 意麵午餐 ＆ 華航回程網路報到選位</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">吃經典羊奶酪意麵。📱 在餐桌上順便用手機登入華航完成預辦登機與選位手續。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">13:00 - 17:20</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>梵蒂岡博物館與西斯汀禮拜堂</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">預約 13:00 入場。精華看點：繪畫館拉斐爾名作 -> 八角中庭（看《勞孔像》） -> 地圖廊 -> 拉斐爾畫室 -> 進入西斯汀禮拜堂欣賞《創世紀》壁畫。🚻 皆有洗手間。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">17:20 - 22:00</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>雙螺旋幾何天梯拍攝 ＆ 燉牛尾晚餐</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">📸 <strong>樓梯大景位：</strong>41.90649, 12.45362 (博物館出口雙螺旋樓梯)。用 16mm 廣角拍攝。晚餐在 Tonnarello 享用羅馬經典燉牛尾 (Coda alla Vaccinara)。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1722979830401-fd878aad76fe?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Map+Gallery'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">西斯汀禮拜堂 </p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://images.unsplash.com/photo-1507671135563-4ef600e03179?auto=format&fit=crop&w=800&q=80" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Spiral+Staircase'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">雙螺旋樓梯 (Spiral Stairs)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">VATICAN • PAGE 25</div>
+                </div>
+
+                <!-- ================= 10/13 羅馬深度 ================= -->
+                <!-- 10/13 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月13日 星期二 (上午) • 雕塑巔峰</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 13 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-palette"></i> 上午重點：清晨空曠許願池 3 大構圖、聖母大殿天花板馬賽克、聖泰雷莎狂喜專業照明</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">05:20 - 06:35</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>清晨空無一人特雷維許願池拍照</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">⏰ 05:50 抵達。📸 <strong>許願池 3 大黃金拍位：</strong>1. 正前方水池貼地低角度（水面倒影對稱）、2. 右側石柱（41.90095, 12.48328 用石雕做前景）、3. 左側 45 度半對稱側邊。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">07:00 - 09:10</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>聖母大殿金馬賽克 ＆ 貝尼尼墓碑</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">回飯店吃早餐，請櫃檯預約明早 06:00 早餐盒。隨後參觀聖母大殿，抬頭看耀眼的耶穌加冕金底馬賽克，在主祭壇右後方尋找貝尼尼極簡的名字地磚。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">09:25 - 11:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>勝利之后聖母堂貝尼尼巔峰雕像點燈</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">進入教堂看右手邊柯納洛小堂《聖泰雷莎的狂喜》。💡 <strong>點燈神技巧：</strong>投 2 歐元硬幣開啟專業照明一分鐘。光束投射在大理石衣褶上，是拍攝雕像神聖感之最美時刻。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1136893008/photo/coronation-of-the-virgin-mosaic-by-jacopo-torriti-in-the-basilica-of-santa-maria-maggiore-in.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Trevi+Fountain'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">聖母大殿《聖母加冕》</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/2166481747/photo/ecstasy-of-saint-teresa.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Santa+Maria+Vittoria'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">勝利之後聖母堂《聖泰雷莎的狂喜》</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">ROME • PAGE 26</div>
+                </div>
+
+                <!-- ================= 10/13 下午 (右頁) ================= -->
+                <div class="page-break preview-page" style="border-left: 1px dashed #8E8A82; padding-left: 15px;">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月13日 星期二 (下午) • 蘋丘夕陽</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #C5A059; color: #1B3022; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 13 (PM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #1B3022; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-camera-retro"></i> 下午重點：天使與殉教者銅線日晷、博爾蓋塞黛芙妮雕像、卡拉瓦喬明暗畫作、蘋丘全羅馬最火紅日落</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">11:45 - 13:15</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>戴克里先浴場教堂子午線 ＆ 午餐</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">吃 Come il Latte 巧克力流水冰淇淋與 Pinsere 披薩（衛生間🚻內有洗手間）。隨後參觀天使與殉教者聖母大殿，觀察黃銅子午線日晷。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">13:20 - 17:10</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>博爾蓋塞美術館與人民聖母堂參觀</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">預約 14:00。看貝尼尼《阿波羅與黛芙妮》大理石變木化細節。隨後至人民聖母教堂，投幣 2 歐元照亮徹拉西小堂卡拉瓦喬神作《聖保羅的歸化》。衛生間🚻在博物館出口處有。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">17:30 - 22:15</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>蘋丘全羅馬最壯美夕陽 ＆ 告別晚宴</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">📸 <strong>日落高光點：</strong>41.91092, 12.47684 (蘋丘觀景台欄杆中央)。拍太陽落入遠處梵蒂岡大教堂穹頂後方的史詩日落。晚餐在 Ristorante Alessio 享用龍蝦麵與丁骨牛排。</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- 景點與美食精選雙美圖 -->
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://drrichardstemp.com/wp-content/uploads/2020/05/bernini-ad-focus.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Pincio+Sunset'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">貝尼尼《阿波羅與黛芙妮》</p>
+                                </td>
+                                <td style="width: 50%; padding: 4px; border: none; background: none;">
+                                    <img src="https://media.istockphoto.com/id/1302477245/photo/the-roofs-and-domes-of-the-historic-heart-of-rome-seen-at-sunset-from-the-terrace-of-the.jpg" alt="" style="width: 100%; max-height: 250px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/400x200?text=Seafood+Pasta'">
+                                    <p style="font-size: 12px; color: #8E8A82; margin: 3px 0 0 0; text-align: center;">蘋丘日落全景 (Pincio Sunset)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">ROME • PAGE 27</div>
+                </div>
+
+                <!-- ================= 10/14 羅馬離境 ================= -->
+                <!-- 10/14 上午 (左頁) -->
+                <div class="page-break preview-page">
+                    <div>
+                        <table style="width: 100%; border-collapse: collapse; border: none; margin-bottom: 10px;">
+                            <tr style="border: none;">
+                                <td style="border: none; padding: 0;"><h2 style="font-size: 20px; color: #1B3022; margin: 0;">10月14日 星期三 (上午) • 機場特快</h2></td>
+                                <td style="border: none; padding: 0; text-align: right;"><span style="background-color: #1B3022; color: #ffffff; padding: 3px 10px; font-size: 14px; font-weight: bold;">DAY 14 (AM)</span></td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 14px; color: #C5A059; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-train"></i> 上午重點：Termini 車站最深月台步行預判、Leonardo Express 機場快車乘車、T3 航廈室內天橋導引</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="width: 15%; font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">05:50 - 06:12</td>
+                                <td style="width: 85%; padding-left: 10px; border: none;">
+                                    <strong>飯店大堂取餐盒退房 ➔ 提行李前往 Termini 站</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">退房，大廳廁所🚻必上。保持警惕，拖曳行李自 Via Giolitti 車站側大門進入，千萬不要走不安全的地鐵層入口。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">06:12 - 06:52</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>Termini 車站深處 ➔ 搭機場快線</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">⚠️ 機場快線月台通常在非常偏遠的 23-27 月台，需從主月台區走到底約 5-7 分鐘。在 Trenitalia App 上完成電子 Check-in 刷碼進站，搭乘 06:20 班次，車上享用早餐盒。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">06:52 - 07:15</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>抵達 FCO 火車站 ➔ 前往 T3 出境大廳</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">下火車後上樓，必須沿著長長的室內玻璃天橋 (含電動步道) 步行約 8-10 分鐘，方可進入 T3 出境大廳。</p>
+                                </td>
+                            </tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #C5A059; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">06:52 - 07:15</td>
+                                <td style="padding-left: 10px; border: none;">                            
+                                    <strong>FCO 機場海關蓋章與退稅手續</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">🚨 拖行李箱去 Customs 海關櫃檯出示電子登機證及退稅單蓋章。隨後到隔壁 Global Blue / Planet 櫃檯排隊領取歐元（或信用卡退稅直接投入實體信箱）。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">08:30 - 09:30</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>華航櫃檯辦理行李託運與安檢</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">前往華航 (CI076) Row E 或 F 櫃檯辦理大行李託運，換取實體登機證，隨後經安檢通道進行人身安檢。衛生間🚻在登機口前必上。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #1B3022; border-left: 3px solid #1B3022; padding-left: 8px; border-bottom: none; border-top: none; border-right: none;">11:00</td>
+                                <td style="padding-left: 10px; border: none;">
+                                    <strong>航班起飛，返抵台灣桃園國際機場 (TPE)</strong>
+                                    <p style="font-size: 13px; color: #666666; margin: 2px 0 0 0;">飛機準時起飛 (CI076)。於10月15日 星期四 05:40 順利抵達桃園機場1航廈，圓滿結束極致難忘的義大利 15 日古典之旅！</p>
+                                </td>
+                        </table>
+
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">DEPARTURE • PAGE 28</div>
+                </div>
+
+
+
+                <!-- ================= 6. 行行檢查打包清單 ================= -->
+                <div class="page-break preview-page">
+                    <div>
+                        <h2 style="font-size: 23px; color: #1B3022; border-bottom: 2px solid #1B3022; padding-bottom: 8px; margin-top: 0;"><i class="fa-solid fa-list-check mr-2 text-brand-gold"></i> 旅行打包大盤點・Checklist</h2>
+                        <p style="font-size: 14px; color: #8E8A82; margin-top: 3px; margin-bottom: 15px;">BEFORE YOU GO - PACKING CHECKLIST</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr style="background-color: #F4F3EF;">
+                                <th style="padding: 6px; text-align: left; font-size: 14px; border: 1px solid #E5E5E0; color: #1B3022; width: 33%;">核心證件與現金</th>
+                                <th style="padding: 6px; text-align: left; font-size: 14px; border: 1px solid #E5E5E0; color: #1B3022; width: 33%;">隨身電子設備</th>
+                                <th style="padding: 6px; text-align: left; font-size: 14px; border: 1px solid #E5E5E0; color: #1B3022; width: 34%;">護理、衣物與藥品</th>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; vertical-align: top;">
+                                    ☐ 護照正本 (效期6個月以上)<br>
+                                    ☐ 護照與身份證影本紙本留底<br>
+                                    ☐ 實體列印高鐵票、門票、飯店預約單<br>
+                                    ☐ 雙幣信用卡 2 張 (含感應式刷卡)<br>
+                                    ☐ 歐元小額硬幣與備用現鈔
+                                </td>
+                                <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; vertical-align: top;">
+                                    ☐ 手機及海外 eSIM 二維碼備份<br>
+                                    ☐ 義大利專用雙圓頭轉接頭 2 個<br>
+                                    ☐ 符合航安規範的行動電源<br>
+                                    ☐ 相機、備份記憶卡、多孔快充插座<br>
+                                    ☐ 充電傳輸線與排插
+                                </td>
+                                <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; vertical-align: top;">
+                                    ☐ 輕便防風保暖夾克、耐磨步行鞋<br>
+                                    ☐ 個人常用藥物、防蚊液、止瀉藥<br>
+                                    ☐ 舒緩肌肉貼布 (用於登頂疲勞)<br>
+                                    ☐ 太陽眼鏡、遮陽帽、輕便折疊晴雨傘<br>
+                                    ☐ 隨身保溫水瓶
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">PACKING LIST • PAGE 29</div>
+                </div>
+
+                <!-- ================= 7. 實用義大利語 ================= -->
+                <div class="page-break preview-page">
+                    <div>
+                        <h2 style="font-size: 23px; color: #1B3022; border-bottom: 2px solid #1B3022; padding-bottom: 8px; margin-top: 0;"><i class="fa-solid fa-language mr-2 text-brand-gold"></i> 實用義大利語日常對照表</h2>
+                        <p style="font-size: 14px; color: #8E8A82; margin-top: 3px; margin-bottom: 15px;">USEFUL ITALIAN PHRASES FOR DAILY LIFE</p>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background-color: #1B3022; color: #ffffff;">
+                                    <th style="padding: 6px; text-align: left; font-size: 14px; border: 1px solid #E5E5E0; width: 33%;">中文意思</th>
+                                    <th style="padding: 6px; text-align: left; font-size: 14px; border: 1px solid #E5E5E0; width: 33%;">義大利文拼寫</th>
+                                    <th style="padding: 6px; text-align: left; font-size: 14px; border: 1px solid #E5E5E0; width: 34%;">讀音與常用語境</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0;">你好 / 再見</td>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; font-weight: bold;">Ciao</td>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; color: #666666;">「ㄑㄧㄠ」 (見面打招呼與告別均通用)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0;">謝謝</td>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; font-weight: bold;">Grazie</td>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; color: #666666;">「葛拉吉耶」 (結帳、指路、服務後常說)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0;">請問...在哪裡？</td>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; font-weight: bold;">Dov'è ... ?</td>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; color: #666666;">「豆V艾 ... ?」 (Dov'è il bagno? 洗手間在哪？)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0;">洗手間 (廁所)</td>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; font-weight: bold;">Bagno / Toilette</td>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; color: #666666;">「班尤」 (在咖啡店或百貨借廁所關鍵詞)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0;">請給我帳單 (結帳)</td>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; font-weight: bold;">Il conto, per favore</td>
+                                    <td style="padding: 8px; font-size: 13px; border: 1px solid #E5E5E0; color: #666666;">「伊 恐投，胚爾 法沃瑞」 (餐廳結帳語)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="font-size: 10px; color: #8E8A82; text-align: right;">ITALIAN PHRASES • PAGE 30</div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-gray-400 py-4 text-center text-xs border-t border-brand-grey/20">
+        <p></p>
+    </footer>
+
+    <!-- DOCX 匯出核心邏輯 -->
+    <script>
+        function exportToDocx() {
+            // 獲取網頁上手冊內容的內嵌 HTML
+            var contentHtml = document.getElementById('docx-content').innerHTML;
+            
+            // 建立標準的 MSO-HTML XML 結構，確保 Word 能夠直接精準解析頁面大小（B5 橫向）與裝訂邊
+            var pageSetupXml = `
+                <xml>
+                    <w:WordDocument>
+                        <w:View>Print</w:View>
+                        <w:Zoom>100</w:Zoom>
+                        <w:DoNotOptimizeForBrowser/>
+                    </w:WordDocument>
+                </xml>
+            `;
+            
+            var fullHtml = `
+                <html xmlns:o="urn:schemas-microsoft-com:office:office" 
+                      xmlns:w="urn:schemas-microsoft-com:office:word" 
+                      xmlns="http://www.w3.org/TR/REC-html40">
+                <head>
+                    <meta charset="utf-8">
+                    <title>義大利 15 日尊榮旅行手冊</title>
+                    <!--[if gte mso 9]>${pageSetupXml}<![endif]-->
+                    <style>
+                        @page Section1 {
+                            size: 250mm 176mm; /* B5 橫向 */
+                            margin: 15mm 20mm 15mm 25mm; /* 25mm 左側裝訂安全邊距 */
+                            mso-page-orientation: landscape;
+                        }
+                        div.Section1 {
+                            page: Section1;
+                        }
+                        body {
+                            font-family: 'Microsoft JhengHei', 'Segoe UI', sans-serif;
+                            color: #1B3022;
+                            line-height: 1.5;
+                        }
+                        .page-break {
+                            page-break-after: always;
+                            clear: both;
+                            mso-break-type: section-break;
+                        }
+                        h1, h2, h3 {
+                            color: #1B3022;
+                        }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-top: 15px;
+                        }
+                        th, td {
+                            border: 1px solid #E5E5E0;
+                            padding: 8px;
+                            text-align: left;
+                        }
+                        img {
+                            max-width: 100%;
+                            height: auto;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="Section1">
+                        ${contentHtml}
+                    </div>
+                </body>
+                </html>
+            `;
+
+            // 使用原生 Blob 打包，完全避開 html-docx-js 載入失敗的問題
+            var blob = new Blob(['\\ufeff' + fullHtml], {
+                type: 'application/msword;charset=utf-8'
+            });
+
+            // 在任何瀏覽器環境下一鍵觸發下載
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var a = document.createElement('a');
+                a.href = e.target.result;
+                a.download = '義大利15日旅遊手冊_B5橫式印刷完整美圖大字版.doc'; // 採用 .doc 以確保 Word 開啟完美解讀
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            };
+            reader.readAsDataURL(blob);
+        }
+    </script>
+</body>
+</html>
